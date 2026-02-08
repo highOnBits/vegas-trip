@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronRight, DollarSign, Cloud } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -8,6 +8,15 @@ import { DayTimeline } from "@/components/day-timeline"
 import { ExpenseDialog } from "@/components/expense-dialog"
 import { WeatherDialog } from "@/components/weather-dialog"
 import { getImagePath } from "@/lib/utils"
+
+const burstEmojis = ["💵", "💰", "💸", "🪙", "💎", "🎰", "🃏", "🤑"]
+
+interface EmojiBurst {
+  id: number
+  x: number
+  y: number
+  emojis: { emoji: string; angle: number; distance: number; size: number }[]
+}
 
 const floatingEmojis = [
   "💵", "💰", "🎰", "💎", "🪙", "💸", "🃏", "🎲", "💳", "🤑",
@@ -35,28 +44,32 @@ const flyingMoneyRight = [
 const dayCards = [
   {
     day: 1,
-    date: "Friday, Mar 27",
+    dayName: "Friday",
+    date: "Mar 27",
     title: "Arrival Night",
     emoji: "🎰",
     image: "/vegas-strip-neon-arrival.jpg",
   },
   {
     day: 2,
-    date: "Saturday, Mar 28",
+    dayName: "Saturday",
+    date: "Mar 28",
     title: "Full Vegas Day",
     emoji: "🎲",
     image: "/bellagio-fountains-vegas.jpg",
   },
   {
     day: 3,
-    date: "Sunday, Mar 29",
+    dayName: "Sunday",
+    date: "Mar 29",
     title: "Grand Canyon Road Trip",
     emoji: "🏜️",
     image: "/grand-canyon-panorama.jpg",
   },
   {
     day: 4,
-    date: "Monday, Mar 30",
+    dayName: "Monday",
+    date: "Mar 30",
     title: "Return & Fly Home",
     emoji: "✈️",
     image: "/grand-canyon-sunrise.jpg",
@@ -67,6 +80,36 @@ export default function Home() {
   const [selectedDay, setSelectedDay] = useState<number | null>(null)
   const [showExpenseDialog, setShowExpenseDialog] = useState(false)
   const [showWeatherDialog, setShowWeatherDialog] = useState(false)
+  const [bursts, setBursts] = useState<EmojiBurst[]>([])
+  const burstIdRef = useRef(0)
+
+  // Emoji burst on click/tap anywhere
+  useEffect(() => {
+    const handleClick = (e: MouseEvent | TouchEvent) => {
+      const x = "touches" in e ? e.touches[0].clientX : e.clientX
+      const y = "touches" in e ? e.touches[0].clientY : e.clientY
+      const count = 6 + Math.floor(Math.random() * 4) // 6-9 emojis per burst
+      const emojis = Array.from({ length: count }, () => ({
+        emoji: burstEmojis[Math.floor(Math.random() * burstEmojis.length)],
+        angle: Math.random() * 360,
+        distance: 40 + Math.random() * 80,
+        size: 14 + Math.random() * 12,
+      }))
+      const id = burstIdRef.current++
+      setBursts((prev) => [...prev, { id, x, y, emojis }])
+      // Clean up after animation
+      setTimeout(() => {
+        setBursts((prev) => prev.filter((b) => b.id !== id))
+      }, 1200)
+    }
+
+    window.addEventListener("click", handleClick)
+    window.addEventListener("touchstart", handleClick, { passive: true })
+    return () => {
+      window.removeEventListener("click", handleClick)
+      window.removeEventListener("touchstart", handleClick)
+    }
+  }, [])
 
   const selectDay = useCallback((day: number) => {
     setSelectedDay(day)
@@ -311,11 +354,11 @@ export default function Home() {
                         whileHover={{ scale: 1.05 }}
                       >
                         <span className="text-[9px] md:text-sm font-mono text-primary">
-                          {card.date}
+                          Day {card.day} · {card.date}
                         </span>
                       </motion.div>
 
-                      <h2 className="text-xl md:text-4xl font-bold mb-1 md:mb-2 text-foreground">Day {card.day}</h2>
+                      <h2 className="text-xl md:text-4xl font-bold mb-1 md:mb-2 text-foreground">{card.dayName}</h2>
 
                       <p className="text-xs md:text-lg text-muted-foreground mb-2 md:mb-4">
                         {card.title}
@@ -351,6 +394,47 @@ export default function Home() {
           <DayTimeline day={selectedDay} onBack={goHome} />
         )}
       </AnimatePresence>
+
+      {/* Emoji burst on click/tap */}
+      <div className="fixed inset-0 z-[100] pointer-events-none overflow-hidden">
+        <AnimatePresence>
+          {bursts.map((burst) => (
+            <div key={burst.id}>
+              {burst.emojis.map((e, i) => {
+                const rad = (e.angle * Math.PI) / 180
+                const tx = Math.cos(rad) * e.distance
+                const ty = Math.sin(rad) * e.distance
+                return (
+                  <motion.span
+                    key={`${burst.id}-${i}`}
+                    className="absolute select-none"
+                    style={{
+                      left: burst.x,
+                      top: burst.y,
+                      fontSize: `${e.size}px`,
+                    }}
+                    initial={{ opacity: 0.6, scale: 0.5, x: 0, y: 0 }}
+                    animate={{
+                      opacity: 0,
+                      scale: [0.5, 1.2, 0.8],
+                      x: tx,
+                      y: ty,
+                      rotate: (Math.random() - 0.5) * 180,
+                    }}
+                    exit={{ opacity: 0 }}
+                    transition={{
+                      duration: 0.8 + Math.random() * 0.4,
+                      ease: "easeOut",
+                    }}
+                  >
+                    {e.emoji}
+                  </motion.span>
+                )
+              })}
+            </div>
+          ))}
+        </AnimatePresence>
+      </div>
     </div>
   )
 }

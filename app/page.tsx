@@ -201,7 +201,7 @@ export default function Home() {
                 const left = seededRandom(i * 7 + 1) * 90 + 5
                 const top = seededRandom(i * 13 + 3) * 80 + 10
                 const size = seededRandom(i * 3 + 5) * 14 + 20
-                const delay = seededRandom(i * 11 + 7) * 5
+                const delay = seededRandom(i * 11 + 7) * 0.5
                 const duration = seededRandom(i * 5 + 2) * 6 + 8
                 const driftX = (seededRandom(i * 9 + 4) - 0.5) * 80
                 const driftY = (seededRandom(i * 17 + 6) - 0.5) * 50

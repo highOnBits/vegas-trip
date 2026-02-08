@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Cloud, CloudRain, Sun } from "lucide-react"
+import { Cloud, Sun, Wind } from "lucide-react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
 interface WeatherDialogProps {
@@ -12,31 +12,44 @@ interface WeatherDialogProps {
 export function WeatherDialog({ open, onOpenChange }: WeatherDialogProps) {
   const weatherData = [
     {
-      date: "Nov 27",
-      day: "Thu",
-      temp: "25°C",
-      condition: "Partly Cloudy",
-      icon: Cloud,
-      high: 25,
-      low: 14,
-    },
-    {
-      date: "Nov 28",
+      date: "Mar 27",
       day: "Fri",
-      temp: "24°C",
+      location: "Vegas",
+      temp: "72°F",
       condition: "Sunny",
       icon: Sun,
-      high: 24,
-      low: 13,
+      high: 72,
+      low: 52,
     },
     {
-      date: "Nov 29",
+      date: "Mar 28",
       day: "Sat",
-      temp: "23°C",
-      condition: "Light Rain",
-      icon: CloudRain,
-      high: 23,
-      low: 16,
+      location: "Vegas",
+      temp: "75°F",
+      condition: "Clear",
+      icon: Sun,
+      high: 75,
+      low: 54,
+    },
+    {
+      date: "Mar 29",
+      day: "Sun",
+      location: "Grand Canyon",
+      temp: "57°F",
+      condition: "Partly Cloudy",
+      icon: Cloud,
+      high: 57,
+      low: 30,
+    },
+    {
+      date: "Mar 30",
+      day: "Mon",
+      location: "GC → Vegas",
+      temp: "60°F",
+      condition: "Breezy",
+      icon: Wind,
+      high: 73,
+      low: 32,
     },
   ]
 
@@ -46,12 +59,12 @@ export function WeatherDialog({ open, onOpenChange }: WeatherDialogProps) {
         <DialogHeader>
           <DialogTitle className="text-xl md:text-2xl font-bold flex items-center gap-2 md:gap-3">
             <Sun className="w-5 h-5 md:w-6 md:h-6 text-accent" />
-            Orlando Weather Forecast
+            Weather Forecast
           </DialogTitle>
         </DialogHeader>
 
         <div className="py-3 md:py-4">
-          <div className="grid grid-cols-3 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {weatherData.map((day, index) => {
               const Icon = day.icon
               return (
@@ -62,13 +75,14 @@ export function WeatherDialog({ open, onOpenChange }: WeatherDialogProps) {
                   transition={{ delay: index * 0.1 }}
                   className="flex flex-col items-center p-3 md:p-5 rounded-xl bg-card/50 border border-border/30 hover:border-primary/30 transition-colors"
                 >
-                  <p className="text-xs md:text-sm text-muted-foreground font-mono mb-2">{day.day}</p>
-                  <Icon className="w-10 h-10 md:w-14 md:h-14 text-primary mb-2 md:mb-3" />
-                  <p className="text-2xl md:text-3xl font-bold text-foreground mb-1 md:mb-2">{day.temp}</p>
-                  <p className="text-xs md:text-sm text-muted-foreground text-center leading-tight mb-2">
+                  <p className="text-xs md:text-sm text-muted-foreground font-mono mb-1">{day.day}</p>
+                  <p className="text-[9px] md:text-xs text-muted-foreground/60 mb-2">{day.location}</p>
+                  <Icon className="w-8 h-8 md:w-12 md:h-12 text-primary mb-2 md:mb-3" />
+                  <p className="text-xl md:text-2xl font-bold text-foreground mb-1 md:mb-2">{day.temp}</p>
+                  <p className="text-[10px] md:text-xs text-muted-foreground text-center leading-tight mb-2">
                     {day.condition}
                   </p>
-                  <p className="text-xs text-muted-foreground/60">
+                  <p className="text-[10px] text-muted-foreground/60">
                     H:{day.high}° L:{day.low}°
                   </p>
                 </motion.div>
@@ -83,7 +97,7 @@ export function WeatherDialog({ open, onOpenChange }: WeatherDialogProps) {
             className="mt-4 md:mt-6 p-3 md:p-4 rounded-xl bg-accent/10 border border-accent/20"
           >
             <p className="text-xs md:text-sm text-muted-foreground text-center">
-              ☀️ Perfect weather for your Orlando adventure! Expect warm days and cool evenings.
+              🌵 Vegas will be warm and sunny! Grand Canyon is ~7,000ft elevation — expect cooler temps and wind.
             </p>
           </motion.div>
 
@@ -95,8 +109,10 @@ export function WeatherDialog({ open, onOpenChange }: WeatherDialogProps) {
           >
             <h4 className="text-xs md:text-sm font-semibold mb-2 text-foreground">🎒 What to Pack:</h4>
             <ul className="text-[10px] md:text-xs text-muted-foreground space-y-1">
-              <li>• Sunscreen and sunglasses</li>
+              <li>• Sunscreen and sunglasses (desert sun is intense)</li>
+              <li>• Layers for Grand Canyon (warm jacket + hoodie)</li>
               <li>• Comfortable walking shoes</li>
+              <li>• Refillable water bottle</li>
             </ul>
           </motion.div>
         </div>

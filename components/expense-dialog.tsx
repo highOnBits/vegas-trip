@@ -9,73 +9,71 @@ interface ExpenseDialogProps {
 }
 
 export function ExpenseDialog({ open, onOpenChange }: ExpenseDialogProps) {
-  // Day 1 expenses per person
-  const day1Food = 25 + 50 // ICON Park lunch + Disney Springs dinner
-  const day1Activities = 30 // The Wheel
-  const day1Uber = 8.75 + 7.5 // Two Uber rides split by 4
+  // Total costs (6 people)
+  const flights = 1200 // $200 roundtrip × 6 people
+  const vegasHotel = 1500 // 2 rooms × 2 nights all-in
+  const gcHotel = 550 // avg of $520–$580
+  const carAndGas = 600 // 7-seat SUV 2 full days (~$400 rental+taxes+fees+insurance) + gas (~$100) + parking (~$100)
+  const food = 1450 // avg of $1,200–$1,700
+  const parkEntry = 35 // per vehicle
 
-  // Day 2 expenses per person
-  const day2Ticket = 185 // Universal IOA ticket
-  const day2Food = 15 + 40 + 20 // Butterbeer + Lunch + Flex block
-  const day2Uber = 8.75 // Morning Uber split by 4
-
-  // Totals per person
-  const totalDay1 = day1Food + day1Activities + day1Uber
-  const totalDay2 = day2Ticket + day2Food + day2Uber
-
-  // Trip-wide expenses
-  const flight = 235 // per person
-  const hotelPerPerson = 350 / 4 // $350 total divided by 4 people
-
-  // Grand total per person
-  const grandTotal = flight + hotelPerPerson + totalDay1 + totalDay2
+  const grandTotal = flights + vegasHotel + gcHotel + carAndGas + food + parkEntry
+  const perPerson = grandTotal / 6
 
   const expenseCategories = [
     {
-      category: "Flights",
+      category: "Flights (ATL ⇄ LAS)",
       icon: "✈️",
-      amount: flight,
-      color: "from-blue-500/20 to-cyan-500/20 border-blue-500/30",
-      textColor: "text-blue-400",
+      total: flights,
+      perPerson: flights / 6,
+      color: "from-amber-500/20 to-yellow-500/20 border-amber-500/30",
+      textColor: "text-amber-400",
+      note: "$200 roundtrip × 6 people",
     },
     {
-      category: "Hotel",
+      category: "Vegas Hotel — Flamingo",
       icon: "🏨",
-      amount: hotelPerPerson,
-      color: "from-purple-500/20 to-pink-500/20 border-purple-500/30",
-      textColor: "text-purple-400",
-      note: "$350 total ÷ 4 people",
+      total: vegasHotel,
+      perPerson: vegasHotel / 6,
+      color: "from-pink-500/20 to-rose-500/20 border-pink-500/30",
+      textColor: "text-pink-400",
+      note: "$1,500 all-in • 2 rooms × 2 nights (incl. resort fees + tax)",
     },
     {
-      category: "Universal Ticket",
-      icon: "🎢",
-      amount: day2Ticket,
+      category: "Grand Canyon — Maswik Lodge",
+      icon: "🏜️",
+      total: gcHotel,
+      perPerson: gcHotel / 6,
       color: "from-orange-500/20 to-red-500/20 border-orange-500/30",
       textColor: "text-orange-400",
+      note: "2 rooms × 1 night (inside the park!)",
+    },
+    {
+      category: "Rental SUV + Gas",
+      icon: "🚗",
+      total: carAndGas,
+      perPerson: carAndGas / 6,
+      color: "from-emerald-500/20 to-green-500/20 border-emerald-500/30",
+      textColor: "text-emerald-400",
+      note: "7-seat SUV, 2 full days + taxes/fees + ~560mi gas",
     },
     {
       category: "Food & Drinks",
       icon: "🍔",
-      amount: day1Food + day2Food,
-      color: "from-green-500/20 to-emerald-500/20 border-green-500/30",
-      textColor: "text-green-400",
-      note: "Day 1 + Day 2 meals",
+      total: food,
+      perPerson: food / 6,
+      color: "from-violet-500/20 to-purple-500/20 border-violet-500/30",
+      textColor: "text-violet-400",
+      note: "~$60–$90/person/day × 3.5 days",
     },
     {
-      category: "Activities",
-      icon: "🎡",
-      amount: day1Activities,
-      color: "from-pink-500/20 to-rose-500/20 border-pink-500/30",
-      textColor: "text-pink-400",
-      note: "The Wheel at ICON Park",
-    },
-    {
-      category: "Transportation (Uber)",
-      icon: "🚕",
-      amount: day1Uber + day2Uber,
-      color: "from-yellow-500/20 to-amber-500/20 border-yellow-500/30",
-      textColor: "text-yellow-400",
-      note: "All rides split by 4",
+      category: "Grand Canyon Entry",
+      icon: "🎫",
+      total: parkEntry,
+      perPerson: parkEntry / 6,
+      color: "from-teal-500/20 to-cyan-500/20 border-teal-500/30",
+      textColor: "text-teal-400",
+      note: "$35 per vehicle (7-day pass)",
     },
   ]
 
@@ -87,7 +85,7 @@ export function ExpenseDialog({ open, onOpenChange }: ExpenseDialogProps) {
             Trip Expense Breakdown
           </DialogTitle>
           <DialogDescription className="text-sm sm:text-base text-muted-foreground">
-            Complete cost breakdown per person for the Orlando adventure
+            Complete cost breakdown for 6 people — Vegas + Grand Canyon
           </DialogDescription>
         </DialogHeader>
 
@@ -108,8 +106,13 @@ export function ExpenseDialog({ open, onOpenChange }: ExpenseDialogProps) {
                     {item.note && <p className="text-xs text-muted-foreground mt-0.5 sm:mt-1">{item.note}</p>}
                   </div>
                 </div>
-                <div className={`text-right font-bold text-base sm:text-xl ${item.textColor}`}>
-                  ${item.amount.toFixed(2)}
+                <div className="text-right">
+                  <div className={`font-bold text-base sm:text-xl ${item.textColor}`}>
+                    ${item.perPerson.toFixed(0)}<span className="text-xs font-normal opacity-70">/pp</span>
+                  </div>
+                  <div className="text-[10px] sm:text-xs text-muted-foreground">
+                    ${item.total.toLocaleString()} total
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -124,27 +127,27 @@ export function ExpenseDialog({ open, onOpenChange }: ExpenseDialogProps) {
             <div className="flex items-center justify-between gap-2">
               <div>
                 <h3 className="text-lg sm:text-2xl font-bold text-foreground">Total Per Person</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">For 4 people traveling</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">For 6 people traveling</p>
               </div>
               <div className="text-right">
-                <div className="text-2xl sm:text-4xl font-bold text-primary">${grandTotal.toFixed(2)}</div>
+                <div className="text-2xl sm:text-4xl font-bold text-primary">~${perPerson.toFixed(0)}</div>
                 <div className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">
-                  ${(grandTotal * 4).toFixed(2)} total for group
+                  ${grandTotal.toLocaleString()} total for group
                 </div>
               </div>
             </div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-3 sm:gap-4 mt-3 sm:mt-4">
-            <div className="p-3 sm:p-4 rounded-xl bg-card/50 border border-border/50">
-              <h4 className="font-semibold text-xs sm:text-sm text-muted-foreground mb-1 sm:mb-2">Day 1 Total</h4>
-              <p className="text-xl sm:text-2xl font-bold text-cyan-400">${totalDay1.toFixed(2)}</p>
-            </div>
-            <div className="p-3 sm:p-4 rounded-xl bg-card/50 border border-border/50">
-              <h4 className="font-semibold text-xs sm:text-sm text-muted-foreground mb-1 sm:mb-2">Day 2 Total</h4>
-              <p className="text-xl sm:text-2xl font-bold text-cyan-400">${totalDay2.toFixed(2)}</p>
-            </div>
-          </div>
+          <motion.div
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="p-3 sm:p-4 rounded-xl bg-card/30 border border-border/20"
+          >
+            <p className="text-[10px] sm:text-xs text-muted-foreground text-center">
+              💡 Costs are averaged from estimated ranges. Actual costs may vary based on flight timing, hotel deals, and dining choices.
+            </p>
+          </motion.div>
         </div>
       </DialogContent>
     </Dialog>

@@ -9,198 +9,266 @@ import { getImagePath } from "@/lib/utils"
 
 const day1Events = [
   {
-    time: "11:00 AM - 12:20 PM",
-    title: "Airport Arrival → Avanti Resort",
-    description: "Uber ride from MCO to Avanti International Resort on I-Drive",
+    time: "8:50 PM ET",
+    title: "Depart ATL → LAS",
+    description: "Nonstop flight from Atlanta to Las Vegas",
     icon: "✈️",
-    details: "~20-35 min ride • Drop bags & quick refresh",
-    transport: "🚕 Uber",
-    cost: "$8.75",
-    isShared: true,
-    backgroundImage: getImagePath("/orlando-airport-road-view.jpg"),
-  },
-  {
-    time: "12:30 PM - 3:00 PM",
-    title: "ICON Park Lunch & Stroll",
-    description: "Casual lunch, people-watching, and quick photos on the lawn",
-    icon: "🍔",
-    details: "Walking distance from Avanti or I-RIDE Trolley",
-    transport: "🚶 Walk / 🚋 Trolley",
-    cost: "$25 per person",
-    isShared: false,
-    backgroundImage: getImagePath("/icon-park-orlando-daytime-restaurants.jpg"),
-  },
-  {
-    time: "3:00 PM - 4:00 PM",
-    title: "Check-in & Rest",
-    description: "Shower and 30-40 min downtime at the resort",
-    icon: "🏨",
-    details: "Recharge for the evening adventures",
-    transport: "🚶 Short walk back",
+    details: "~4h flight • You gain 3 hours (arrive PT)",
+    transport: "✈️ Nonstop",
     cost: "",
-    backgroundImage: getImagePath("/modern-hotel-room-orlando-resort.jpg"),
+    backgroundImage: getImagePath("/airport-departure-night.jpg"),
   },
   {
-    time: "4:45 PM - 6:00 PM",
-    title: "The Wheel Sunset Ride",
-    description: "Board around 5:05-5:15 PM for the perfect sunset view",
-    icon: "🎡",
-    details: "~20 min ride • Sunset at 5:28 PM",
-    transport: "🚶 Walk / 🚋 Trolley",
-    cost: "$30 per person",
-    isShared: false,
-    backgroundImage: getImagePath("/icon-park-ferris-wheel-sunset-orlando.jpg"),
+    time: "~10:30 PM PT",
+    title: "Land in Las Vegas",
+    description: "Arrive at Harry Reid International Airport (LAS)",
+    icon: "🛬",
+    details: "Grab bags & head out",
+    transport: "",
+    cost: "",
+    backgroundImage: getImagePath("/vegas-strip-night-background.jpg"),
   },
   {
-    time: "6:00 PM - 9:30 PM",
-    title: "Disney Springs Evening",
-    description: "Drinks, dinner, live music, and holiday décor",
-    icon: "✨",
-    details: "Magical evening vibes with festive atmosphere",
-    transport: "🚕 Uber (~15-25 min)",
-    cost: "$50 per person",
-    isShared: false,
-    backgroundImage: getImagePath("/disney-springs-night-lights-holiday-decorations.jpg"),
-  },
-  {
-    time: "9:30 PM - 10:00 PM",
-    title: "Return to Avanti",
-    description: "Head back to the resort for rest",
-    icon: "🌙",
-    details: "End of Day 1",
-    transport: "🚕 Uber (~15-25 min)",
-    cost: "$7.50",
+    time: "11:00 PM",
+    title: "Uber to Flamingo Hotel",
+    description: "Check-in at Flamingo Las Vegas Hotel & Casino",
+    icon: "🏨",
+    details: "2 rooms (2 Queen beds each) • Drop bags & freshen up",
+    transport: "🚕 Uber from LAS",
+    cost: "",
     isShared: true,
-    backgroundImage: getImagePath("/orlando-night-street-lights.jpg"),
+    backgroundImage: getImagePath("/flamingo-hotel-night.jpg"),
+  },
+  {
+    time: "11:30 PM – 1:00 AM",
+    title: "Strip Walk & Late Dinner",
+    description: "Casual food (quick bites / food court) and a short Strip walk",
+    icon: "🌃",
+    details: "Sleep early-ish — big days ahead!",
+    transport: "🚶 Walk",
+    cost: "$15 per person",
+    isShared: false,
+    backgroundImage: getImagePath("/vegas-late-night-food.jpg"),
   },
 ]
 
 const day2Events = [
   {
-    time: "7:45 AM - 8:30 AM",
-    title: "Avanti → Islands of Adventure",
-    description: "Uber to Universal CityWalk, aim to be at IOA gates by 8:30 AM",
-    icon: "🚕",
-    details: "Park opens ~9:00 AM • Open Universal Orlando app",
-    transport: "🚕 Uber",
-    cost: "$8.75",
-    isShared: true,
-    backgroundImage: getImagePath("/universal-orlando-citywalk-entrance-morning.jpg"),
+    time: "10:00 AM",
+    title: "Late Wake-up & Brunch",
+    description: "Brunch near the hotel — start the day right",
+    icon: "🥞",
+    details: "No rush, take it easy",
+    transport: "🚶 Walk",
+    cost: "$30 per person",
+    isShared: false,
+    backgroundImage: getImagePath("/vegas-brunch.jpg"),
   },
   {
-    time: "9:00 AM - 10:10 AM",
-    title: "Hagrid's Motorbike Adventure",
-    description: "Rope drop for the biggest headliner ride",
-    icon: "🧹",
-    details: "If huge wait, swap with VelociCoaster",
+    time: "12:00 – 4:00 PM",
+    title: "Strip Walk & Casino Hopping",
+    description: "Explore freely — Bellagio fountains, Caesars, Venetian, and more",
+    icon: "🎰",
+    details: "No rush • Soak it all in",
+    transport: "🚶 Walk the Strip",
+    cost: "",
+    backgroundImage: getImagePath("/vegas-strip-daytime.jpg"),
+  },
+  {
+    time: "4:30 – 6:30 PM",
+    title: "Pool & Rest",
+    description: "Chill by the pool or recharge at the room",
+    icon: "🏊",
+    details: "Recharge for the evening ahead",
+    transport: "🚶 Back to Flamingo",
+    cost: "",
+    backgroundImage: getImagePath("/vegas-pool-afternoon.jpg"),
+  },
+  {
+    time: "7:30 PM",
+    title: "Group Dinner",
+    description: "Dinner at a group-friendly spot on the Strip",
+    icon: "🍽️",
+    details: "Dress up a bit — Vegas style",
+    transport: "🚶 Walk / 🚕 Uber",
+    cost: "$50 per person",
+    isShared: false,
+    backgroundImage: getImagePath("/vegas-group-dinner.jpg"),
+  },
+  {
+    time: "9:00 PM – Late",
+    title: "Casino & Fremont Street",
+    description: "Casino time, then head downtown for the Fremont Street Experience",
+    icon: "🎲",
+    details: "Lively atmosphere • Cheaper drinks downtown",
+    transport: "🚕 Uber to Fremont",
+    cost: "$20 per person",
+    isShared: false,
+    backgroundImage: getImagePath("/fremont-street-night.jpg"),
+  },
+]
+
+const day3Events = [
+  {
+    time: "6:45 AM",
+    title: "Wake Up & Get Ready",
+    description: "Early start — big adventure day!",
+    icon: "⏰",
+    details: "Pack a day bag with layers",
     transport: "",
     cost: "",
-    backgroundImage: getImagePath("/hagrids-motorbike-adventure-universal-ride.jpg"),
+    backgroundImage: getImagePath("/flamingo-hotel-night.jpg"),
   },
   {
-    time: "10:15 AM - 10:40 AM",
-    title: "Harry Potter Forbidden Journey",
-    description: "Experience the castle queue and incredible dark ride",
-    icon: "🏰",
-    details: "Indoor headliner • Magical experience",
-    transport: "",
-    cost: "",
-    backgroundImage: getImagePath("/hogwarts-castle-universal-islands-of-adventure.jpg"),
-  },
-  {
-    time: "10:50 AM - 11:25 AM",
-    title: "Jurassic World VelociCoaster",
-    description: "Epic outdoor coaster with metal detectors",
-    icon: "🦖",
-    details: "Free ride-time lockers • Try Single Rider",
-    transport: "",
-    cost: "",
-    backgroundImage: getImagePath("/velocicoaster-universal-orlando-blue-coaster.jpg"),
-  },
-  {
-    time: "11:30 AM - 12:10 PM",
-    title: "Potter Experience & Butterbeer",
-    description: "Ollivanders wand demo and photos in Hogsmeade",
-    icon: "⚡",
-    details: "Immerse in the wizarding world",
+    time: "7:30 AM",
+    title: "Breakfast & Check-out",
+    description: "Quick breakfast, then check out of Flamingo",
+    icon: "☕",
+    details: "Leave extra bags with bell desk if needed",
     transport: "",
     cost: "$15 per person",
     isShared: false,
-    backgroundImage: getImagePath("/hogsmeade-village-universal-butterbeer-shops.jpg"),
+    backgroundImage: getImagePath("/vegas-brunch.jpg"),
   },
   {
-    time: "12:15 PM - 1:00 PM",
-    title: "Lunch Break",
-    description: "Three Broomsticks (Hogsmeade) or Thunder Falls Terrace",
-    icon: "🍗",
-    details: "Quick bite nearby",
-    transport: "",
-    cost: "$40 per person",
-    isShared: false,
-    backgroundImage: getImagePath("/three-broomsticks-restaurant-hogsmeade-interior.jpg"),
-  },
-  {
-    time: "1:10 PM - 1:45 PM",
-    title: "Skull Island: Reign of Kong",
-    description: "Big indoor ride experience",
-    icon: "🗿",
-    details: "Mostly indoors • Single Rider option",
-    transport: "",
+    time: "8:00 AM",
+    title: "Pick Up Rental SUV",
+    description: "Grab the minivan or 7-seat SUV near the Strip",
+    icon: "🚗",
+    details: "1 vehicle for all 6 people",
+    transport: "🚗 SUV / Minivan",
     cost: "",
-    backgroundImage: getImagePath("/skull-island-king-kong-universal-orlando.jpg"),
+    backgroundImage: getImagePath("/vegas-strip-daytime.jpg"),
   },
   {
-    time: "1:55 PM - 2:30 PM",
-    title: "Spider-Man Adventure",
-    description: "Amazing 3D dark ride classic",
-    icon: "🕷️",
-    details: "Single Rider when posted",
-    transport: "",
+    time: "8:15 AM – 1:00 PM",
+    title: "Drive to Grand Canyon South Rim",
+    description: "Epic road trip through the Arizona desert",
+    icon: "🛣️",
+    details: "~280 miles / ~4.5 hours • 1 rest stop",
+    transport: "🚗 Drive",
     cost: "",
-    backgroundImage: getImagePath("/spiderman-ride-universal-islands-of-adventure.jpg"),
+    backgroundImage: getImagePath("/desert-highway-road-trip.jpg"),
   },
   {
-    time: "2:35 PM - 3:10 PM",
-    title: "The Incredible Hulk Coaster",
-    description: "Optional 3rd big coaster",
-    icon: "💪",
-    details: "Metal detectors + lockers required",
-    transport: "",
-    cost: "",
-    backgroundImage: getImagePath("/incredible-hulk-coaster-green-universal-orlando.jpg"),
+    time: "1:00 PM",
+    title: "Arrive at Grand Canyon",
+    description: "Enter the park — first glimpse of the canyon!",
+    icon: "🏜️",
+    details: "Park entry: $35 per vehicle (valid 7 days)",
+    transport: "🚗 Drive in",
+    cost: "$35 total",
+    isShared: true,
+    backgroundImage: getImagePath("/grand-canyon-panorama.jpg"),
   },
   {
-    time: "3:15 PM - 5:00 PM",
-    title: "Flex Block & Exploration",
-    description: "Jurassic Park Discovery Center, coffee, shops",
-    icon: "🧊",
-    details: "Optional: Jurassic Park River Adventure if warm",
-    transport: "",
+    time: "1:30 – 5:30 PM",
+    title: "Viewpoints & Rim Walking",
+    description: "Lunch inside the park, then explore scenic viewpoints and easy rim trails",
+    icon: "🥾",
+    details: "Mather Point → Yavapai → short Rim Trail",
+    transport: "🚶 Walk / 🚗 Drive between viewpoints",
     cost: "$20 per person",
     isShared: false,
-    backgroundImage: getImagePath("/placeholder.svg?height=400&width=600"),
+    backgroundImage: getImagePath("/grand-canyon-panorama.jpg"),
   },
   {
-    time: "5:00 PM - Close",
-    title: "Night Vibes & Re-rides",
-    description: "Hogsmeade after dark, VelociCoaster at night",
+    time: "Sunset",
+    title: "Sunset at the Rim (MUST DO)",
+    description: "The highlight of the entire trip — take it slow and soak it in",
+    icon: "🌅",
+    details: "One main sunset viewpoint • Hopi Point or Powell Point",
+    transport: "",
+    cost: "",
+    backgroundImage: getImagePath("/grand-canyon-sunset-viewpoint.jpg"),
+  },
+  {
+    time: "7:30 PM – Night",
+    title: "Dinner & Stargazing",
+    description: "Dinner at Maswik Lodge, then step outside — the stars are unreal",
     icon: "🌌",
-    details: "Magical atmosphere • Lap on Hulk if skipped earlier",
-    transport: "",
-    cost: "",
-    backgroundImage: getImagePath("/placeholder.svg?height=400&width=600"),
-  },
-  {
-    time: "Optional",
-    title: "Toon Lagoon Water Rides",
-    description: "Dudley Do-Right's & Popeye rides (you WILL get soaked!)",
-    icon: "💦",
-    details: "Poncho/lockers recommended • Best on warm evenings",
-    transport: "",
-    cost: "",
-    backgroundImage: getImagePath("/placeholder.svg?height=400&width=600"),
+    details: "Quiet night inside the park • Minimal light pollution",
+    transport: "🚶 Walk to lodge",
+    cost: "$25 per person",
+    isShared: false,
+    backgroundImage: getImagePath("/lodge-starry-night.jpg"),
   },
 ]
+
+const day4Events = [
+  {
+    time: "6:15 AM",
+    title: "Sunrise Viewpoint (Optional but 🔥)",
+    description: "Catch the sunrise over the Grand Canyon — a 10/10 experience",
+    icon: "🌄",
+    details: "HIGHLY recommended • Dress warm",
+    transport: "🚶 Walk from lodge",
+    cost: "",
+    backgroundImage: getImagePath("/grand-canyon-sunrise.jpg"),
+  },
+  {
+    time: "8:00 AM",
+    title: "Breakfast & Check-out",
+    description: "Breakfast at Maswik Lodge, then check out",
+    icon: "☕",
+    details: "Pack up and hit the road",
+    transport: "",
+    cost: "$15 per person",
+    isShared: false,
+    backgroundImage: getImagePath("/lodge-starry-night.jpg"),
+  },
+  {
+    time: "9:00 AM – 2:00 PM",
+    title: "Drive Back to Vegas",
+    description: "Scenic drive back through the Arizona desert",
+    icon: "🚗",
+    details: "~4.5 hours • Enjoy the desert views",
+    transport: "🚗 Drive",
+    cost: "",
+    backgroundImage: getImagePath("/desert-highway-road-trip.jpg"),
+  },
+  {
+    time: "2:00 – 6:00 PM",
+    title: "Late Lunch & Shopping",
+    description: "Grab a late lunch, last-minute shopping, and chill — don't exhaust yourselves",
+    icon: "🛍️",
+    details: "Keep it easy before the flight",
+    transport: "🚶 Walk the Strip",
+    cost: "$30 per person",
+    isShared: false,
+    backgroundImage: getImagePath("/vegas-strip-daytime.jpg"),
+  },
+  {
+    time: "7:30 – 8:00 PM",
+    title: "Return Car & Airport Dinner",
+    description: "Drop off the rental at LAS, then grab dinner at the airport",
+    icon: "🍔",
+    details: "Return car → security → eat → relax",
+    transport: "🚗 Drive to LAS",
+    cost: "$20 per person",
+    isShared: false,
+    backgroundImage: getImagePath("/airport-departure-night.jpg"),
+  },
+  {
+    time: "11:59 PM",
+    title: "Redeye: LAS → ATL",
+    description: "Fly home — land Atlanta Tuesday morning",
+    icon: "🛫",
+    details: "Get some sleep on the plane!",
+    transport: "✈️ Nonstop",
+    cost: "",
+    backgroundImage: getImagePath("/vegas-strip-night-background.jpg"),
+  },
+]
+
+const allEvents = [day1Events, day2Events, day3Events, day4Events]
+
+const dayInfoMap: Record<number, { date: string; theme: string; subtitle: string }> = {
+  1: { date: "Friday, March 27", theme: "Arrival Night", subtitle: "ATL → Las Vegas" },
+  2: { date: "Saturday, March 28", theme: "Full Vegas Day", subtitle: "Strip • Casino • Fremont" },
+  3: { date: "Sunday, March 29", theme: "Grand Canyon", subtitle: "Road Trip to South Rim" },
+  4: { date: "Monday, March 30", theme: "Return & Fly Home", subtitle: "Grand Canyon → LAS → ATL" },
+}
 
 interface DayTimelineProps {
   day: number
@@ -208,11 +276,9 @@ interface DayTimelineProps {
 }
 
 export function DayTimeline({ day, onBack }: DayTimelineProps) {
-  const events = day === 1 ? day1Events : day2Events
-  const dayInfo =
-    day === 1
-      ? { date: "Thursday, November 27", theme: "Light & Chill", subtitle: "Thanksgiving Day" }
-      : { date: "Friday, November 28", theme: "Islands of Adventure", subtitle: "No Express Pass" }
+  const events = allEvents[day - 1] || day1Events
+
+  const dayInfo = dayInfoMap[day] || dayInfoMap[1]
 
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -229,15 +295,15 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
       if (event.cost) {
         const match = event.cost.match(/\$?(\d+(?:\.\d+)?)/)
         if (match) {
-          total += Number.parseFloat(match[1])
+          const amount = Number.parseFloat(match[1])
+          if (event.isShared) {
+            total += amount / 6
+          } else {
+            total += amount
+          }
         }
       }
     })
-
-    if (day === 2) {
-      total += 185
-    }
-
     return total
   }
 
@@ -289,17 +355,14 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
               transition={{ delay: 0.2 }}
               className="flex flex-wrap gap-2 text-[10px] md:text-sm"
             >
-              <div className="px-2.5 md:px-4 py-1.5 md:py-2 rounded-full bg-accent/20 text-accent border border-accent/30 font-bold">
-                💰 Total: ${totalExpense.toFixed(2)} per person
-              </div>
+              {totalExpense > 0 && (
+                <div className="px-2.5 md:px-4 py-1.5 md:py-2 rounded-full bg-accent/20 text-accent border border-accent/30 font-bold">
+                  💰 ~${totalExpense.toFixed(0)} per person
+                </div>
+              )}
               <div className="px-2 md:px-3 py-1 md:py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20">
                 {events.length} Activities
               </div>
-              {day === 2 && (
-                <div className="px-2 md:px-3 py-1 md:py-1.5 rounded-full bg-accent/10 text-accent border border-accent/20">
-                  🎢 Includes Ticket
-                </div>
-              )}
             </motion.div>
           </div>
         </div>
@@ -311,7 +374,7 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
           {/* Curved path SVG */}
           <svg className="absolute left-6 md:left-12 top-0 h-full w-1 pointer-events-none" style={{ width: "2px" }}>
             <motion.path
-              d={`M 1 0 Q 1 50, ${day === 1 ? "15" : "20"} 100 T 1 200 Q 1 250, ${day === 1 ? "-10" : "25"} 300 T 1 400 Q 1 450, ${day === 1 ? "20" : "-15"} 500 T 1 600 Q 1 650, ${day === 1 ? "-5" : "18"} 700 T 1 800 Q 1 850, ${day === 1 ? "12" : "-8"} 900 T 1 1000 Q 1 1050, 1 1100 T 1 ${events.length * 180}`}
+              d={`M 1 0 Q 1 50, 15 100 T 1 200 Q 1 250, -10 300 T 1 400 Q 1 450, 20 500 T 1 600 Q 1 650, -5 700 T 1 800 Q 1 850, 12 900 T 1 1000 Q 1 1050, 1 1100 T 1 ${events.length * 180}`}
               stroke="url(#gradient)"
               strokeWidth="2"
               fill="none"
@@ -322,9 +385,9 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
             />
             <defs>
               <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="rgb(139 220 234 / 0.3)" />
-                <stop offset="50%" stopColor="rgb(139 220 234 / 0.6)" />
-                <stop offset="100%" stopColor="rgb(139 220 234 / 0.3)" />
+                <stop offset="0%" stopColor="rgb(219 80 120 / 0.4)" />
+                <stop offset="50%" stopColor="rgb(219 80 120 / 0.6)" />
+                <stop offset="100%" stopColor="rgb(217 149 47 / 0.3)" />
               </linearGradient>
             </defs>
           </svg>
@@ -337,7 +400,24 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
           </div>
         </div>
 
-        {/* Footer info */}
+        {/* Pro Tips */}
+        {day === 3 && (
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 1 }}
+            className="mt-8 md:mt-12 p-4 md:p-6 rounded-xl md:rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50"
+          >
+            <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3 text-primary">💡 Grand Canyon Tips</h3>
+            <ul className="space-y-1.5 md:space-y-2 text-xs md:text-sm text-muted-foreground">
+              <li>• Bring layers — the rim is 7,000ft elevation and much cooler than Vegas</li>
+              <li>• Carry plenty of water and snacks for the viewpoint walks</li>
+              <li>• Sunset is the #1 highlight — arrive at your viewpoint early for a good spot</li>
+              <li>• The stars at night are incredible — no light pollution inside the park</li>
+            </ul>
+          </motion.div>
+        )}
+
         {day === 2 && (
           <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -345,25 +425,19 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
             transition={{ delay: 1 }}
             className="mt-8 md:mt-12 p-4 md:p-6 rounded-xl md:rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50"
           >
-            <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3 text-primary">💡 Pro Tips</h3>
+            <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3 text-primary">💡 Vegas Tips</h3>
             <ul className="space-y-1.5 md:space-y-2 text-xs md:text-sm text-muted-foreground">
-              <li>• Use Single Rider lines on VelociCoaster, Hulk, Spider-Man & Kong when available</li>
-              <li>• Bring a slim sling bag - large bags require paid lockers</li>
-              <li>• VelociCoaster & Hulk require completely empty pockets</li>
-              <li>• Download Universal Orlando app for live wait times</li>
+              <li>• Bellagio fountains run every 15–30 min — free show, don't miss it</li>
+              <li>• Fremont Street is cheaper and livelier for drinks & vibes</li>
+              <li>• Set a casino budget before you go and stick to it</li>
+              <li>• Wear comfortable walking shoes — the Strip is longer than it looks</li>
             </ul>
-            <div className="mt-3 md:mt-4 pt-3 md:pt-4 border-t border-border/50">
-              <p className="text-xs md:text-sm text-muted-foreground">
-                <strong className="text-foreground">Day 2 includes:</strong> Universal Islands of Adventure ticket ($185
-                per person) + food & activities
-              </p>
-            </div>
           </motion.div>
         )}
       </div>
 
-      {/* Departure info for Day 2 */}
-      {day === 2 && (
+      {/* Departure info for Day 4 */}
+      {day === 4 && (
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -372,14 +446,14 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
         >
           <div className="p-4 md:p-8 rounded-xl md:rounded-2xl bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/20 backdrop-blur-sm">
             <div className="flex items-start gap-3 md:gap-4">
-              <div className="text-2xl md:text-4xl">🛫</div>
+              <div className="text-2xl md:text-4xl">🛬</div>
               <div>
-                <h3 className="text-lg md:text-2xl font-bold mb-1 md:mb-2">Departure - Saturday, Nov 29</h3>
+                <h3 className="text-lg md:text-2xl font-bold mb-1 md:mb-2">Arrival Home - Tuesday, Mar 31</h3>
                 <p className="text-xs md:text-base text-muted-foreground mb-1 md:mb-2">
-                  <strong className="text-foreground">9:30 AM</strong> - Leave for MCO
+                  <strong className="text-foreground">Early Morning</strong> - Land ATL
                 </p>
                 <p className="text-[10px] md:text-sm text-muted-foreground">
-                  🚕 Uber from Avanti → MCO (~20-35 min) • Pad earlier if you want extra buffer time
+                  ✈️ Redeye from LAS → ATL • Get some rest on the plane!
                 </p>
               </div>
             </div>

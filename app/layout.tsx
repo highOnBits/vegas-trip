@@ -8,8 +8,8 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Orlando Adventure 2025 | Travel Itinerary",
-  description: "Your magical 2-day Orlando journey - Universal, Disney Springs & ICON Park",
+  title: "Vegas + Grand Canyon 2026 | Travel Itinerary",
+  description: "4-day Vegas and Grand Canyon adventure for 6 — March 27-31, 2026",
   generator: "v0.app",
   icons: {
     icon: [

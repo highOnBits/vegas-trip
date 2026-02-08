@@ -1,36 +1,45 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Cloud, CloudRain, Sun } from "lucide-react"
+import { Cloud, Sun, Wind } from "lucide-react"
 
 export function WeatherWidget() {
   const weatherData = [
     {
-      date: "Nov 27",
-      day: "Thu",
-      temp: "77°F",
-      condition: "Partly Cloudy",
-      icon: Cloud,
-      high: 77,
-      low: 58,
-    },
-    {
-      date: "Nov 28",
+      date: "Mar 27",
       day: "Fri",
-      temp: "75°F",
+      temp: "72°F",
       condition: "Sunny",
       icon: Sun,
-      high: 75,
-      low: 56,
+      high: 72,
+      low: 52,
     },
     {
-      date: "Nov 29",
+      date: "Mar 28",
       day: "Sat",
-      temp: "73°F",
-      condition: "Light Rain",
-      icon: CloudRain,
+      temp: "75°F",
+      condition: "Clear",
+      icon: Sun,
+      high: 75,
+      low: 54,
+    },
+    {
+      date: "Mar 29",
+      day: "Sun",
+      temp: "57°F",
+      condition: "Partly Cloudy",
+      icon: Cloud,
+      high: 57,
+      low: 30,
+    },
+    {
+      date: "Mar 30",
+      day: "Mon",
+      temp: "60°F",
+      condition: "Breezy",
+      icon: Wind,
       high: 73,
-      low: 60,
+      low: 32,
     },
   ]
 
@@ -44,10 +53,10 @@ export function WeatherWidget() {
       <div className="bg-card/30 backdrop-blur-md rounded-xl md:rounded-2xl border border-border/30 p-3 md:p-5 shadow-2xl">
         <div className="flex items-center gap-2 mb-3 md:mb-4">
           <Sun className="w-4 h-4 md:w-5 md:h-5 text-accent" />
-          <h3 className="text-xs md:text-base font-semibold text-foreground">Orlando Weather Forecast</h3>
+          <h3 className="text-xs md:text-base font-semibold text-foreground">Vegas & Grand Canyon Weather</h3>
         </div>
 
-        <div className="grid grid-cols-3 gap-2 md:gap-4">
+        <div className="grid grid-cols-4 gap-2 md:gap-4">
           {weatherData.map((day, index) => {
             const Icon = day.icon
             return (
@@ -71,7 +80,7 @@ export function WeatherWidget() {
         </div>
 
         <p className="text-[8px] md:text-xs text-muted-foreground/60 mt-2 md:mt-3 text-center font-mono">
-          Perfect weather for your adventure!
+          Pack layers for the Grand Canyon!
         </p>
       </div>
     </motion.div>

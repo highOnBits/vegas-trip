@@ -402,32 +402,21 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
           className="fixed top-20 md:top-24 right-4 md:right-8 z-50 group cursor-pointer"
         >
           <div className="relative">
-            {/* Pulsing ring */}
-            <motion.div
-              className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-blue-500/30 via-emerald-500/20 to-purple-500/30 blur-lg"
+            <motion.span
+              className="text-6xl md:text-7xl drop-shadow-2xl cursor-pointer block"
               animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.5, 0.8, 0.5],
+                scale: [1, 1.12, 1],
+                rotate: [0, -4, 4, 0],
               }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            />
-            {/* Main button */}
-            <div className="relative h-14 w-14 md:h-18 md:w-18 rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 shadow-2xl shadow-blue-500/40 flex items-center justify-center border-2 border-white/20 group-hover:shadow-blue-400/60 group-hover:border-white/40 transition-all duration-300 group-hover:scale-110">
-              <motion.span
-                className="text-2xl md:text-3xl"
-                animate={{
-                  scale: [1, 1.15, 1],
-                  rotate: [0, -5, 5, 0],
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              >
-                🗺️
-              </motion.span>
-            </div>
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              whileHover={{ scale: 1.3 }}
+            >
+              🗺️
+            </motion.span>
             {/* Label */}
             <motion.div
-              className="absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-0.5 rounded-full bg-background/90 border border-blue-500/30 text-[9px] md:text-[10px] font-bold text-blue-400 backdrop-blur-sm"
-              animate={{ y: [0, -2, 0] }}
+              className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-0.5 rounded-full bg-background/90 border border-blue-500/30 text-[9px] md:text-[11px] font-bold text-blue-400 backdrop-blur-sm"
+              animate={{ y: [0, -3, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
               Route Map

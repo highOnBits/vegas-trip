@@ -399,11 +399,12 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
-          className="fixed top-20 md:top-24 right-3 md:right-20 z-50 group cursor-pointer"
+          className="fixed top-28 md:top-24 right-3 md:right-20 z-50 group cursor-pointer"
         >
           <div className="relative">
             <motion.span
-              className="text-5xl md:text-9xl drop-shadow-2xl cursor-pointer block"
+              className="text-5xl md:text-9xl cursor-pointer block"
+              style={{ filter: "drop-shadow(0 0 8px rgba(255,255,255,0.6)) drop-shadow(0 0 20px rgba(255,255,255,0.3))" }}
               animate={{
                 scale: [1, 1.08, 1, 1, 1],
                 rotate: [10, 12, 10, 10, 10],
@@ -420,7 +421,7 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
               {/* Mobile */}
-              <svg width="110" height="34" viewBox="0 0 110 34" className="md:hidden">
+              <svg width="110" height="34" viewBox="0 0 110 34" className="md:hidden" style={{ filter: "drop-shadow(0 0 6px rgba(255,255,255,0.5))" }}>
                 <defs>
                   <path id="curve-sm" d="M 5,30 Q 55,2 105,30" fill="none" />
                 </defs>
@@ -431,7 +432,7 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
                 </text>
               </svg>
               {/* Desktop */}
-              <svg width="180" height="50" viewBox="0 0 180 50" className="hidden md:block">
+              <svg width="180" height="50" viewBox="0 0 180 50" className="hidden md:block" style={{ filter: "drop-shadow(0 0 8px rgba(255,255,255,0.5))" }}>
                 <defs>
                   <path id="curve-lg" d="M 5,44 Q 90,2 175,44" fill="none" />
                 </defs>

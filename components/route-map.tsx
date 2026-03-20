@@ -269,26 +269,29 @@ export default function RouteMap() {
       <text x="357" y="192" fill="#93c5fd" fontFamily="Arial,sans-serif" fontSize="14" fontWeight="bold" textAnchor="middle">🚐 ~4h 30m</text>
       <text x="357" y="212" fill="#60a5fa" fontFamily="monospace" fontSize="11" textAnchor="middle">~280 mi · I-15</text>
 
-      {/* === People boarding animation === */}
+      {/* === People walking in a line to the van === */}
+      {/* 5 male (dark hair) + 3 female (dark hair), spaced in a line from left, walking to van */}
       {[
-        { emoji: "👨", from: "80,400", to: "125,415" },
-        { emoji: "👨", from: "90,385", to: "122,412" },
-        { emoji: "👩", from: "65,415", to: "118,418" },
-        { emoji: "👨", from: "100,435", to: "128,423" },
-        { emoji: "👩", from: "70,395", to: "120,410" },
-        { emoji: "👨", from: "85,430", to: "126,425" },
+        { emoji: "👨🏻", startX: -60, delay: 0 },
+        { emoji: "👩🏻", startX: -40, delay: 0.005 },
+        { emoji: "👨🏻", startX: -20, delay: 0.01 },
+        { emoji: "👩🏻", startX: 0, delay: 0.015 },
+        { emoji: "👨🏻", startX: 20, delay: 0.02 },
+        { emoji: "👨🏻", startX: 40, delay: 0.025 },
+        { emoji: "👩🏻", startX: 60, delay: 0.03 },
+        { emoji: "👨🏻", startX: 80, delay: 0.035 },
       ].map((p, i) => (
         <text key={`person-${i}`} fontSize="18">
           <animate
             attributeName="opacity"
             values="0;1;1;1;0;0;0;0;0;0;0;0;1;0"
-            keyTimes="0;0.03;0.06;0.12;0.15;0.16;0.17;0.5;0.85;0.9;0.91;0.93;0.94;1"
+            keyTimes={`0;${0.03 + p.delay};${0.06 + p.delay};0.12;0.15;0.16;0.17;0.5;0.85;0.9;0.91;0.93;0.94;1`}
             dur="30s"
             repeatCount="indefinite"
           />
           <animateMotion
-            values={`${p.from};${p.from};${p.to};${p.to}`}
-            keyTimes="0;0.03;0.12;1"
+            values={`${p.startX},415;${p.startX},415;125,415;125,415`}
+            keyTimes={`0;${0.03 + p.delay};0.13;1`}
             dur="30s"
             repeatCount="indefinite"
           />

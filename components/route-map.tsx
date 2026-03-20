@@ -290,7 +290,7 @@ export default function RouteMap() {
               attributeName="opacity"
               values={`0;0;1;1;0;0`}
               keyTimes={`0;${startMove};${(parseFloat(startMove) + 0.005).toFixed(4)};${endMove};${vanish};1`}
-              dur="30s"
+              dur="40s"
               repeatCount="indefinite"
             />
             <animateMotion
@@ -298,7 +298,7 @@ export default function RouteMap() {
               keyTimes={`0;${startMove};${endMove};1`}
               keyPoints={`0;0;1;1`}
               calcMode="linear"
-              dur="30s"
+              dur="40s"
               repeatCount="indefinite"
             />
             {p.emoji}
@@ -306,67 +306,97 @@ export default function RouteMap() {
         )
       })}
 
-      {/* === Van: stationary at Vegas while people board === */}
-      <text fontSize="44" filter="url(#softglow)">
-        <animate
-          attributeName="opacity"
-          values="0;1;1;1;0;0"
-          keyTimes="0;0.005;0.01;0.14;0.145;1"
-          dur="30s"
-          repeatCount="indefinite"
-        />
-        <animateMotion
-          values="118,408;118,408"
-          keyTimes="0;1"
-          dur="30s"
-          repeatCount="indefinite"
-        />
-        🚐
-      </text>
+      {/*
+        ANIMATION TIMELINE (40s total):
+        0.00–0.12  (0–4.8s)   People curve in to van at Vegas
+        0.00–0.12             Van stationary at Vegas (flipped = faces right for parked)
+        0.13–0.30  (5.2–12s)  Van A→B outbound (flipped = faces right)
+        0.30–0.38  (12–15.2s) STOP at GC: people out, jump, back in
+        0.38–0.50  (15.2–20s) Van B→C outbound (flipped = faces right)
+        0.50–0.62  (20–24.8s) STOP at Page: people→house, zzz, people→van
+        0.62–0.88  (24.8–35.2s) Van C→A return (normal = faces left)
+        0.88–1.00  (35.2–40s) Pause / reset
+      */}
 
-      {/* === Van: outbound A → B → C (normal orientation, faces right) === */}
+      {/* === Van: stationary at Vegas while people board (flipped = faces right) === */}
       <g filter="url(#softglow)">
-        <animate
-          attributeName="opacity"
-          values="0;0;0;1;1;0;0"
-          keyTimes="0;0.14;0.15;0.155;0.55;0.555;1"
-          dur="30s"
-          repeatCount="indefinite"
-        />
-        <animateMotion
-          dur="30s"
-          repeatCount="indefinite"
-          keyTimes="0;0.15;0.55;1"
-          keyPoints="0;0;1;1"
-          calcMode="linear"
-          path="M 130,420 C 140,500 180,580 260,630 Q 300,650 330,640 C 450,620 580,660 700,690 Q 770,700 820,660 Q 870,620 900,540 Q 910,500 900,470 Q 960,490 1020,530 Q 1060,560 1080,590 Q 1100,620 1130,610 Q 1170,590 1180,540 Q 1190,480 1170,400 Q 1150,330 1130,260 Q 1115,200 1100,140"
-        />
-        <text fontSize="44" textAnchor="middle" dominantBaseline="central">
-          🚐
-        </text>
+        <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.005;0.12;0.125;1" dur="40s" repeatCount="indefinite"/>
+        <animateMotion values="118,408;118,408" keyTimes="0;1" dur="40s" repeatCount="indefinite"/>
+        <text fontSize="44" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
       </g>
 
-      {/* === Van: return C → A (flipped, faces left) === */}
+      {/* === Van: outbound A → B (flipped = faces right) === */}
       <g filter="url(#softglow)">
-        <animate
-          attributeName="opacity"
-          values="0;0;0;1;1;0;0"
-          keyTimes="0;0.55;0.555;0.56;0.91;0.915;1"
-          dur="30s"
-          repeatCount="indefinite"
-        />
-        <animateMotion
-          dur="30s"
-          repeatCount="indefinite"
-          keyTimes="0;0.56;0.91;1"
-          keyPoints="0;0;1;1"
-          calcMode="linear"
-          path="M 1100,140 Q 1020,105 920,95 Q 820,85 730,80 Q 650,78 590,90 Q 540,105 520,140 Q 500,175 460,200 Q 400,240 340,290 Q 280,330 230,360 C 190,380 160,400 130,420"
-        />
-        {/* Flipped van using scale(-1,1) */}
-        <text fontSize="44" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)" x="0" y="0">
-          🚐
-        </text>
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.12;0.13;0.30;0.301;1" dur="40s" repeatCount="indefinite"/>
+        <animateMotion dur="40s" repeatCount="indefinite"
+          keyTimes="0;0.13;0.30;1" keyPoints="0;0;1;1" calcMode="linear"
+          path="M 130,420 C 140,500 180,580 260,630 Q 300,650 330,640 C 450,620 580,660 700,690 Q 770,700 820,660 Q 870,620 900,540 Q 910,500 900,470"/>
+        <text fontSize="44" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
+      </g>
+
+      {/* === STOP AT GRAND CANYON (0.30–0.38): van parked, people out, jump, back in === */}
+      {/* Van stationary at GC */}
+      <g filter="url(#softglow)">
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.299;0.30;0.38;0.381;1" dur="40s" repeatCount="indefinite"/>
+        <animateMotion values="888,458;888,458" keyTimes="0;1" dur="40s" repeatCount="indefinite"/>
+        <text fontSize="44" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
+      </g>
+      {/* People pop out at GC, spread out, jump, come back */}
+      <g>
+        <animate attributeName="opacity" values="0;0;1;1;1;1;0;0" keyTimes="0;0.305;0.31;0.33;0.35;0.36;0.37;1" dur="40s" repeatCount="indefinite"/>
+        {/* People spread out from van, then bounce */}
+        <animateMotion values="900,460;900,460;860,430;860,430;860,420;860,430;900,460;900,460" keyTimes="0;0.305;0.32;0.33;0.34;0.35;0.365;1" dur="40s" repeatCount="indefinite"/>
+        <text fontSize="22">🧑🏻👧🏻🧑🏻👧🏻🧑🏻🧑🏻👧🏻🧑🏻</text>
+      </g>
+
+      {/* === Van: outbound B → C (flipped = faces right) === */}
+      <g filter="url(#softglow)">
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.379;0.38;0.50;0.501;1" dur="40s" repeatCount="indefinite"/>
+        <animateMotion dur="40s" repeatCount="indefinite"
+          keyTimes="0;0.38;0.50;1" keyPoints="0;0;1;1" calcMode="linear"
+          path="M 900,470 Q 960,490 1020,530 Q 1060,560 1080,590 Q 1100,620 1130,610 Q 1170,590 1180,540 Q 1190,480 1170,400 Q 1150,330 1130,260 Q 1115,200 1100,140"/>
+        <text fontSize="44" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
+      </g>
+
+      {/* === STOP AT PAGE (0.50–0.62): van parked, people→house, zzz, people→van === */}
+      {/* Van stationary at Page */}
+      <g filter="url(#softglow)">
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.499;0.50;0.62;0.621;1" dur="40s" repeatCount="indefinite"/>
+        <animateMotion values="1088,128;1088,128" keyTimes="0;1" dur="40s" repeatCount="indefinite"/>
+        <text fontSize="44" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
+      </g>
+      {/* House emoji near Page */}
+      <text fontSize="32">
+        <animate attributeName="opacity" values="0;0;1;1;1;1;0;0" keyTimes="0;0.505;0.51;0.53;0.58;0.60;0.605;1" dur="40s" repeatCount="indefinite"/>
+        <animateMotion values="1140,90;1140,90" keyTimes="0;1" dur="40s" repeatCount="indefinite"/>
+        🏠
+      </text>
+      {/* People walk from van to house */}
+      <g>
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.505;0.51;0.535;0.54;1" dur="40s" repeatCount="indefinite"/>
+        <animateMotion values="1095,130;1095,130;1140,100;1140,100" keyTimes="0;0.505;0.535;1" dur="40s" repeatCount="indefinite"/>
+        <text fontSize="18">🧑🏻👧🏻🧑🏻👧🏻🧑🏻🧑🏻👧🏻🧑🏻</text>
+      </g>
+      {/* Zzz on house */}
+      <text fontSize="24">
+        <animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.54;0.545;0.55;0.58;0.585;1" dur="40s" repeatCount="indefinite"/>
+        <animateMotion values="1155,65;1155,65;1155,55;1155,55" keyTimes="0;0.545;0.57;1" dur="40s" repeatCount="indefinite"/>
+        💤
+      </text>
+      {/* People walk from house back to van */}
+      <g>
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.585;0.59;0.615;0.62;1" dur="40s" repeatCount="indefinite"/>
+        <animateMotion values="1140,100;1140,100;1095,130;1095,130" keyTimes="0;0.585;0.615;1" dur="40s" repeatCount="indefinite"/>
+        <text fontSize="18">🧑🏻👧🏻🧑🏻👧🏻🧑🏻🧑🏻👧🏻🧑🏻</text>
+      </g>
+
+      {/* === Van: return C → A (normal orientation = faces left) === */}
+      <g filter="url(#softglow)">
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.619;0.62;0.88;0.885;1" dur="40s" repeatCount="indefinite"/>
+        <animateMotion dur="40s" repeatCount="indefinite"
+          keyTimes="0;0.62;0.88;1" keyPoints="0;0;1;1" calcMode="linear"
+          path="M 1100,140 Q 1020,105 920,95 Q 820,85 730,80 Q 650,78 590,90 Q 540,105 520,140 Q 500,175 460,200 Q 400,240 340,290 Q 280,330 230,360 C 190,380 160,400 130,420"/>
+        <text fontSize="44" textAnchor="middle" dominantBaseline="central">🚐</text>
       </g>
 
       {/* === Route Legend === */}

@@ -351,7 +351,7 @@ export default function RouteMap() {
         <text fontSize="44" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
       </g>
 
-      {/* People come OUT of van one by one → walk to spot → hang out → jump → walk back INTO van one by one */}
+      {/* People come OUT of van one by one, walk to spots, hang out, walk back IN one by one */}
       {[
         { emoji: "🧑🏻", x: 790, y: 400, d: 0 },
         { emoji: "👧🏻", x: 825, y: 385, d: 1 },
@@ -363,24 +363,24 @@ export default function RouteMap() {
         { emoji: "🧑🏻", x: 760, y: 410, d: 7 },
       ].map((p, i) => {
         const vanX = 895; const vanY = 460
-        // Exit from van: staggered, each starts at van and walks to their spot
-        const exitStart = (0.29 + p.d * 0.006).toFixed(4)
-        const exitEnd = (0.31 + p.d * 0.006).toFixed(4)
-        // Return to van: staggered, each walks from spot back into van then vanishes
-        const retStart = (0.41 + p.d * 0.006).toFixed(4)
-        const retEnd = (0.43 + p.d * 0.006).toFixed(4)
-        const vanishAt = (0.432 + p.d * 0.006).toFixed(4)
+        // Each person: appear at van → walk to spot → stay → jump → stay → walk back → vanish at van
+        // Stagger: 0.005 apart so they come out one after another
+        const t0 = (0.29 + p.d * 0.005).toFixed(4)   // appear at van
+        const t1 = (0.305 + p.d * 0.005).toFixed(4)   // arrive at spot
+        // Everyone hangs out 0.37–0.39, jump at 0.39
+        const t2 = (0.41 + p.d * 0.005).toFixed(4)    // start walking back
+        const t3 = (0.425 + p.d * 0.005).toFixed(4)   // arrive at van, vanish
         return (
           <text key={`gc-${i}`} fontSize="22">
-            {/* Visible from exit start until they walk back into van */}
+            {/* Simple: invisible → visible for entire walk out + stay + walk back → invisible */}
             <animate attributeName="opacity"
-              values={`0;0;1;1;1;1;1;0;0`}
-              keyTimes={`0;${exitStart};${(parseFloat(exitStart)+0.002).toFixed(4)};${exitEnd};0.39;${retStart};${retEnd};${vanishAt};1`}
+              values="0;1;1;1;1;1;1;1;0;0"
+              keyTimes={`0;${t0};${t1};0.37;0.39;0.395;${t2};${t3};${(parseFloat(t3)+0.001).toFixed(4)};1`}
               dur="50s" repeatCount="indefinite"/>
-            {/* Position: van → spot → jump → spot → van */}
+            {/* Movement: van → spot (walk out) → stay → jump → stay → van (walk back) */}
             <animateMotion
-              values={`${vanX},${vanY};${vanX},${vanY};${p.x},${p.y};${p.x},${p.y};${p.x},${p.y-18};${p.x},${p.y};${p.x},${p.y};${vanX},${vanY};${vanX},${vanY}`}
-              keyTimes={`0;${exitStart};${exitEnd};0.385;0.392;0.395;${retStart};${retEnd};1`}
+              values={`${vanX},${vanY};${p.x},${p.y};${p.x},${p.y};${p.x},${p.y-20};${p.x},${p.y};${p.x},${p.y};${vanX},${vanY}`}
+              keyTimes={`0;${t1};0.385;0.392;0.395;${t2};${t3}`}
               dur="50s" repeatCount="indefinite"/>
             {p.emoji}
           </text>

@@ -409,6 +409,24 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
         </div>
       </div>
 
+      {/* Road Trip Route Map — shown on Day 3 and Day 4 */}
+      {(day === 3 || day === 4) && (
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="relative z-10 container mx-auto px-3 md:px-4 pt-6 md:pt-8 max-w-5xl"
+        >
+          <div className="rounded-xl md:rounded-2xl overflow-hidden border border-border/50 shadow-lg">
+            <img
+              src={getImagePath("/road-trip-route-map.svg")}
+              alt="Road trip route: Vegas → Grand Canyon South Rim → Antelope Canyon → Horseshoe Bend → Vegas"
+              className="w-full h-auto"
+            />
+          </div>
+        </motion.div>
+      )}
+
       {/* Timeline */}
       <div className="relative z-10 container mx-auto px-3 md:px-4 py-6 md:py-12 max-w-5xl">
         <div className="relative">

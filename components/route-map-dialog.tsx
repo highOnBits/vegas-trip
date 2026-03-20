@@ -10,12 +10,24 @@ interface RouteMapDialogProps {
 }
 
 const VAN_TIMELINE = [
-  [0.00, 130], [0.13, 130], [0.14, 130],
-  [0.18, 330], [0.22, 700], [0.27, 900], [0.28, 900],
-  [0.48, 900], [0.49, 950], [0.53, 1080], [0.57, 1100], [0.58, 1100],
-  [0.73, 1100], [0.74, 1100],
-  [0.77, 900], [0.80, 730], [0.83, 520], [0.87, 300], [0.91, 130],
-  [1.00, 130],
+  [0.00, 130],   // parked at Vegas
+  [0.12, 130],   // van departs
+  [0.16, 330],   // heading south
+  [0.20, 700],   // bottom arc
+  [0.23, 900],   // arriving at GC
+  [0.40, 900],   // parked at GC (long stop)
+  [0.42, 950],   // leaving GC
+  [0.46, 1080],  // near Cameron
+  [0.48, 1100],  // arriving at Page
+  [0.60, 1100],  // parked at Page (overnight)
+  [0.61, 1120],  // leaving for Antelope
+  [0.63, 1180],  // arriving at D
+  [0.80, 1180],  // parked at D (Antelope+HB stop)
+  [0.82, 1100],  // leaving D, heading back
+  [0.85, 800],   // upper route
+  [0.88, 520],   // near St. George
+  [0.92, 130],   // back at Vegas
+  [1.00, 130],   // pause
 ] as const
 
 function getVanX(t: number): number {
@@ -50,13 +62,12 @@ export function RouteMapDialog({ open, onOpenChange }: RouteMapDialogProps) {
       if (svgWidth <= viewWidth) { rafRef.current = requestAnimationFrame(tick); return }
 
       const elapsed = (Date.now() - startTimeRef.current) / 1000
-      if (elapsed >= 50) {
-        // First cycle done — stop auto-scrolling, let user control
+      if (elapsed >= 60) {
         doneRef.current = true
         return
       }
 
-      const vanX = getVanX(elapsed / 50)
+      const vanX = getVanX(elapsed / 60)
       const targetScroll = (vanX / 1400) * svgWidth - viewWidth / 2
       const clamped = Math.max(0, Math.min(svgWidth - viewWidth, targetScroll))
       container.scrollLeft += (clamped - container.scrollLeft) * 0.06

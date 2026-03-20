@@ -269,35 +269,32 @@ export default function RouteMap() {
       <text x="357" y="192" fill="#93c5fd" fontFamily="Arial,sans-serif" fontSize="14" fontWeight="bold" textAnchor="middle">🚐 ~4h 30m</text>
       <text x="357" y="212" fill="#60a5fa" fontFamily="monospace" fontSize="11" textAnchor="middle">~280 mi · I-15</text>
 
-      {/* === People walking in a line to the van === */}
-      {/* 5 male (dark hair) + 3 female (dark hair), spaced in a line from left, walking to van */}
-      {[
-        { emoji: "👨🏻", startX: -60, delay: 0 },
-        { emoji: "👩🏻", startX: -40, delay: 0.005 },
-        { emoji: "👨🏻", startX: -20, delay: 0.01 },
-        { emoji: "👩🏻", startX: 0, delay: 0.015 },
-        { emoji: "👨🏻", startX: 20, delay: 0.02 },
-        { emoji: "👨🏻", startX: 40, delay: 0.025 },
-        { emoji: "👩🏻", startX: 60, delay: 0.03 },
-        { emoji: "👨🏻", startX: 80, delay: 0.035 },
-      ].map((p, i) => (
-        <text key={`person-${i}`} fontSize="18">
-          <animate
-            attributeName="opacity"
-            values="0;1;1;1;0;0;0;0;0;0;0;0;1;0"
-            keyTimes={`0;${0.03 + p.delay};${0.06 + p.delay};0.12;0.15;0.16;0.17;0.5;0.85;0.9;0.91;0.93;0.94;1`}
-            dur="30s"
-            repeatCount="indefinite"
-          />
-          <animateMotion
-            values={`${p.startX},415;${p.startX},415;125,415;125,415`}
-            keyTimes={`0;${0.03 + p.delay};0.13;1`}
-            dur="30s"
-            repeatCount="indefinite"
-          />
-          {p.emoji}
-        </text>
-      ))}
+      {/* === 8 faces glide in a group towards the van, then vanish === */}
+      {/* They move together as one group from left towards Vegas marker, then fade out */}
+      <g>
+        <animate
+          attributeName="opacity"
+          values="0;1;1;1;0;0;0;0;0;0;0;0"
+          keyTimes="0;0.02;0.04;0.11;0.14;0.15;0.5;0.85;0.9;0.91;0.93;1"
+          dur="30s"
+          repeatCount="indefinite"
+        />
+        <animateMotion
+          values="-120,400;-120,400;110,410;110,410"
+          keyTimes="0;0.02;0.12;1"
+          dur="30s"
+          repeatCount="indefinite"
+        />
+        {/* Row of 8 faces in a line */}
+        <text fontSize="16" x="0" y="0">👨🏻</text>
+        <text fontSize="16" x="20" y="0">👩🏻</text>
+        <text fontSize="16" x="40" y="0">👨🏻</text>
+        <text fontSize="16" x="60" y="0">👩🏻</text>
+        <text fontSize="16" x="80" y="0">👨🏻</text>
+        <text fontSize="16" x="100" y="0">👨🏻</text>
+        <text fontSize="16" x="120" y="0">👩🏻</text>
+        <text fontSize="16" x="140" y="0">👨🏻</text>
+      </g>
 
       {/* === Animated Van === */}
       <g filter="url(#softglow)">

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
   <defs>
     <radialGradient id="bg" cx="50%" cy="50%" r="70%">
       <stop offset="0%" stop-color="#1a1a2e"/>
@@ -12,148 +12,162 @@
       </feMerge>
     </filter>
     <filter id="softglow">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
     <filter id="shadow">
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.6"/>
     </filter>
-    <!-- Terrain texture dots -->
-    <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.5" fill="#ffffff" opacity="0.03"/>
+    <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="0.5" fill="#ffffff" opacity="0.03"/>
     </pattern>
   </defs>
 
   <!-- Background -->
-  <rect width="1200" height="800" fill="url(#bg)"/>
-  <rect width="1200" height="800" fill="url(#dots)"/>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#dots)"/>
 
-  <!-- Subtle state border line (AZ/NV) -->
-  <line x1="420" y1="0" x2="380" y2="800" stroke="#ffffff" stroke-width="0.5" opacity="0.08" stroke-dasharray="8 8"/>
-  <text x="360" y="780" fill="#ffffff" opacity="0.06" font-family="monospace" font-size="11" text-anchor="middle">NEVADA</text>
-  <text x="440" y="780" fill="#ffffff" opacity="0.06" font-family="monospace" font-size="11" text-anchor="middle">ARIZONA</text>
+  <!-- Subtle state border (NV | AZ) -->
+  <line x1="390" y1="30" x2="360" y2="870" stroke="#ffffff" stroke-width="0.5" opacity="0.07" stroke-dasharray="10 10"/>
+  <text x="340" y="860" fill="#ffffff" opacity="0.05" font-family="monospace" font-size="11" text-anchor="end">NEVADA</text>
+  <text x="410" y="860" fill="#ffffff" opacity="0.05" font-family="monospace" font-size="11" text-anchor="start">ARIZONA</text>
+
+  <!--
+    GEOGRAPHY (approximate):
+    - Las Vegas:            left,  middle       (180, 480)
+    - Grand Canyon S. Rim:  right, lower        (920, 580)
+    - Page / Antelope:      right, upper         (820, 180)
+    - Horseshoe Bend:       right, upper-mid     (760, 260)
+
+    Blue route:  A → B  (Vegas → South Rim)          — sweeps right and slightly down
+    Red route:   B → C  (South Rim → Page)            — goes up/north
+    Green route: C → D  (Antelope → Horseshoe)        — short hop south
+    White route: D → A  (Horseshoe → Vegas)            — sweeps left across top then down
+  -->
 
   <!-- ===== ROUTE LINES ===== -->
 
-  <!-- Leg 1: Vegas → South Rim (Blue) — Day 1 -->
-  <path d="M 200,350 C 320,360 450,280 580,220 Q 650,190 750,200 Q 820,210 880,280"
-        stroke="#3b82f6" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.9"/>
-  <!-- Blue dashed overlay for motion effect -->
-  <path d="M 200,350 C 320,360 450,280 580,220 Q 650,190 750,200 Q 820,210 880,280"
-        stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="12 8" opacity="0.5">
-    <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="3s" repeatCount="indefinite"/>
+  <!-- Leg 1: Vegas → South Rim (Blue) -->
+  <path id="leg-blue"
+        d="M 180,480 C 350,490 550,520 700,540 Q 800,555 920,580"
+        stroke="#3b82f6" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.85"/>
+  <path d="M 180,480 C 350,490 550,520 700,540 Q 800,555 920,580"
+        stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="14 10" opacity="0.4">
+    <animate attributeName="stroke-dashoffset" from="0" to="-48" dur="4s" repeatCount="indefinite"/>
   </path>
 
-  <!-- Leg 2: South Rim → Page/Antelope Canyon (Red) — Day 1 evening -->
-  <path d="M 880,280 Q 920,240 940,200 Q 960,160 950,130 Q 940,110 920,100 Q 880,80 840,120 Q 820,145 810,170"
-        stroke="#ef4444" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.9"/>
-  <path d="M 880,280 Q 920,240 940,200 Q 960,160 950,130 Q 940,110 920,100 Q 880,80 840,120 Q 820,145 810,170"
-        stroke="#f87171" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="12 8" opacity="0.5">
-    <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="3s" repeatCount="indefinite"/>
+  <!-- Leg 2: South Rim → Page/Antelope (Red) -->
+  <path id="leg-red"
+        d="M 920,580 Q 940,450 900,340 Q 870,260 820,180"
+        stroke="#ef4444" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.85"/>
+  <path d="M 920,580 Q 940,450 900,340 Q 870,260 820,180"
+        stroke="#f87171" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="14 10" opacity="0.4">
+    <animate attributeName="stroke-dashoffset" from="0" to="-48" dur="4s" repeatCount="indefinite"/>
   </path>
 
-  <!-- Leg 3: Antelope Canyon → Horseshoe Bend (Green) — Day 2 -->
-  <path d="M 810,170 Q 800,190 790,210 Q 780,230 770,240"
-        stroke="#22c55e" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.9"/>
+  <!-- Leg 3: Antelope Canyon → Horseshoe Bend (Green) -->
+  <path id="leg-green"
+        d="M 820,180 Q 800,210 760,260"
+        stroke="#22c55e" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.85"/>
 
-  <!-- Leg 4: Horseshoe Bend → Vegas (White) — Day 2 return -->
-  <path d="M 770,240 Q 700,300 600,350 Q 500,400 400,420 Q 300,430 230,390 Q 210,375 200,350"
-        stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.7"/>
-  <path d="M 770,240 Q 700,300 600,350 Q 500,400 400,420 Q 300,430 230,390 Q 210,375 200,350"
-        stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="12 8" opacity="0.3">
-    <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="3s" repeatCount="indefinite"/>
+  <!-- Leg 4: Horseshoe Bend → Vegas (White) -->
+  <path id="leg-white"
+        d="M 760,260 Q 600,300 450,350 Q 300,400 220,450 Q 190,465 180,480"
+        stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.55"/>
+  <path d="M 760,260 Q 600,300 450,350 Q 300,400 220,450 Q 190,465 180,480"
+        stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="14 10" opacity="0.25">
+    <animate attributeName="stroke-dashoffset" from="0" to="-48" dur="4s" repeatCount="indefinite"/>
   </path>
 
   <!-- ===== LOCATION MARKERS ===== -->
 
   <!-- A: Las Vegas -->
-  <circle cx="200" cy="350" r="18" fill="#1e1b4b" stroke="#a78bfa" stroke-width="3" filter="url(#shadow)"/>
-  <circle cx="200" cy="350" r="8" fill="#a78bfa" opacity="0.8"/>
-  <text x="200" y="355" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">A</text>
+  <circle cx="180" cy="480" r="20" fill="#1e1b4b" stroke="#a78bfa" stroke-width="3" filter="url(#shadow)"/>
+  <circle cx="180" cy="480" r="9" fill="#a78bfa" opacity="0.7"/>
+  <text x="180" y="486" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">A</text>
 
   <!-- B: Grand Canyon South Rim -->
-  <circle cx="880" cy="280" r="18" fill="#1e1b4b" stroke="#f59e0b" stroke-width="3" filter="url(#shadow)"/>
-  <circle cx="880" cy="280" r="8" fill="#f59e0b" opacity="0.8"/>
-  <text x="880" y="285" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">B</text>
+  <circle cx="920" cy="580" r="20" fill="#1e1b4b" stroke="#f59e0b" stroke-width="3" filter="url(#shadow)"/>
+  <circle cx="920" cy="580" r="9" fill="#f59e0b" opacity="0.7"/>
+  <text x="920" y="586" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">B</text>
 
-  <!-- C: Antelope Canyon / Page -->
-  <circle cx="810" cy="170" r="18" fill="#1e1b4b" stroke="#ec4899" stroke-width="3" filter="url(#shadow)"/>
-  <circle cx="810" cy="170" r="8" fill="#ec4899" opacity="0.8"/>
-  <text x="810" y="175" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">C</text>
+  <!-- C: Antelope Canyon -->
+  <circle cx="820" cy="180" r="20" fill="#1e1b4b" stroke="#ec4899" stroke-width="3" filter="url(#shadow)"/>
+  <circle cx="820" cy="180" r="9" fill="#ec4899" opacity="0.7"/>
+  <text x="820" y="186" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">C</text>
 
   <!-- D: Horseshoe Bend -->
-  <circle cx="770" cy="240" r="18" fill="#1e1b4b" stroke="#22c55e" stroke-width="3" filter="url(#shadow)"/>
-  <circle cx="770" cy="240" r="8" fill="#22c55e" opacity="0.8"/>
-  <text x="770" y="245" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">D</text>
+  <circle cx="760" cy="260" r="20" fill="#1e1b4b" stroke="#22c55e" stroke-width="3" filter="url(#shadow)"/>
+  <circle cx="760" cy="260" r="9" fill="#22c55e" opacity="0.7"/>
+  <text x="760" y="266" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">D</text>
 
-  <!-- ===== LOCATION LABELS ===== -->
+  <!-- ===== LOCATION LABELS (positioned to avoid overlaps) ===== -->
 
-  <!-- Las Vegas label -->
-  <rect x="80" y="385" width="240" height="60" rx="12" fill="#0f0f1f" stroke="#a78bfa" stroke-width="1.5" opacity="0.95" filter="url(#shadow)"/>
-  <text x="200" y="406" fill="#a78bfa" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">🎰 Las Vegas</text>
-  <text x="200" y="430" fill="#9ca3af" font-family="monospace" font-size="12" text-anchor="middle">Start &amp; End</text>
+  <!-- Las Vegas — below-left of marker -->
+  <rect x="60" y="515" width="240" height="65" rx="14" fill="#0f0f1f" stroke="#a78bfa" stroke-width="1.5" opacity="0.95" filter="url(#shadow)"/>
+  <text x="180" y="540" fill="#a78bfa" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">🎰  Las Vegas</text>
+  <text x="180" y="565" fill="#9ca3af" font-family="monospace" font-size="13" text-anchor="middle">Start &amp; End</text>
 
-  <!-- South Rim label -->
-  <rect x="890" y="295" width="260" height="60" rx="12" fill="#0f0f1f" stroke="#f59e0b" stroke-width="1.5" opacity="0.95" filter="url(#shadow)"/>
-  <text x="1020" y="316" fill="#f59e0b" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">🏜️ Grand Canyon</text>
-  <text x="1020" y="340" fill="#9ca3af" font-family="monospace" font-size="12" text-anchor="middle">South Rim</text>
+  <!-- Grand Canyon — right of marker -->
+  <rect x="955" y="555" width="220" height="65" rx="14" fill="#0f0f1f" stroke="#f59e0b" stroke-width="1.5" opacity="0.95" filter="url(#shadow)"/>
+  <text x="1065" y="580" fill="#f59e0b" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">🏜️  Grand Canyon</text>
+  <text x="1065" y="604" fill="#9ca3af" font-family="monospace" font-size="13" text-anchor="middle">South Rim</text>
 
-  <!-- Antelope Canyon label -->
-  <rect x="835" y="120" width="260" height="60" rx="12" fill="#0f0f1f" stroke="#ec4899" stroke-width="1.5" opacity="0.95" filter="url(#shadow)"/>
-  <text x="965" y="141" fill="#ec4899" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">📸 Antelope Canyon</text>
-  <text x="965" y="165" fill="#9ca3af" font-family="monospace" font-size="12" text-anchor="middle">Page, AZ</text>
+  <!-- Antelope Canyon — right of marker -->
+  <rect x="860" y="130" width="250" height="65" rx="14" fill="#0f0f1f" stroke="#ec4899" stroke-width="1.5" opacity="0.95" filter="url(#shadow)"/>
+  <text x="985" y="155" fill="#ec4899" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">📸  Antelope Canyon</text>
+  <text x="985" y="179" fill="#9ca3af" font-family="monospace" font-size="13" text-anchor="middle">Page, AZ</text>
 
-  <!-- Horseshoe Bend label -->
-  <rect x="560" y="215" width="200" height="60" rx="12" fill="#0f0f1f" stroke="#22c55e" stroke-width="1.5" opacity="0.95" filter="url(#shadow)"/>
-  <text x="660" y="236" fill="#22c55e" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">🌊 Horseshoe Bend</text>
-  <text x="660" y="260" fill="#9ca3af" font-family="monospace" font-size="12" text-anchor="middle">Page, AZ</text>
+  <!-- Horseshoe Bend — left of marker -->
+  <rect x="530" y="235" width="210" height="65" rx="14" fill="#0f0f1f" stroke="#22c55e" stroke-width="1.5" opacity="0.95" filter="url(#shadow)"/>
+  <text x="635" y="260" fill="#22c55e" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">🌊  Horseshoe Bend</text>
+  <text x="635" y="284" fill="#9ca3af" font-family="monospace" font-size="13" text-anchor="middle">Page, AZ</text>
 
-  <!-- ===== DRIVE TIME LABELS ===== -->
+  <!-- ===== DRIVE TIME LABELS (on route lines, no overlaps) ===== -->
 
-  <!-- Blue: Vegas → South Rim -->
-  <rect x="460" y="225" width="180" height="45" rx="10" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5" opacity="0.95"/>
-  <text x="550" y="243" fill="#3b82f6" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">🚐 4h 21m</text>
-  <text x="550" y="261" fill="#60a5fa" font-family="monospace" font-size="10" text-anchor="middle">~280 miles</text>
+  <!-- Blue: Vegas → South Rim — centered on the blue curve -->
+  <rect x="440" y="480" width="175" height="48" rx="10" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5" opacity="0.95" filter="url(#shadow)"/>
+  <text x="527" y="500" fill="#93c5fd" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">🚐  4h 21m</text>
+  <text x="527" y="519" fill="#60a5fa" font-family="monospace" font-size="11" text-anchor="middle">~280 miles</text>
 
-  <!-- Red: South Rim → Page -->
-  <rect x="920" y="180" width="160" height="45" rx="10" fill="#3f1219" stroke="#ef4444" stroke-width="1.5" opacity="0.95"/>
-  <text x="1000" y="198" fill="#ef4444" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">🚐 2h 30m</text>
-  <text x="1000" y="216" fill="#f87171" font-family="monospace" font-size="10" text-anchor="middle">~140 miles</text>
+  <!-- Red: South Rim → Page — along the red curve -->
+  <rect x="940" y="380" width="170" height="48" rx="10" fill="#3f1219" stroke="#ef4444" stroke-width="1.5" opacity="0.95" filter="url(#shadow)"/>
+  <text x="1025" y="400" fill="#fca5a5" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">🚐  2h 30m</text>
+  <text x="1025" y="419" fill="#f87171" font-family="monospace" font-size="11" text-anchor="middle">~140 miles</text>
 
-  <!-- Green: Antelope → Horseshoe -->
-  <rect x="715" y="185" width="70" height="30" rx="8" fill="#0f2e1a" stroke="#22c55e" stroke-width="1.5" opacity="0.95"/>
-  <text x="750" y="205" fill="#22c55e" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">15m</text>
+  <!-- Green: Antelope → Horseshoe — between C and D -->
+  <rect x="815" y="210" width="72" height="32" rx="8" fill="#0f2e1a" stroke="#22c55e" stroke-width="1.5" opacity="0.95"/>
+  <text x="851" y="232" fill="#4ade80" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">15m</text>
 
-  <!-- White: Horseshoe → Vegas -->
-  <rect x="380" y="420" width="180" height="45" rx="10" fill="#1a1a2e" stroke="#ffffff" stroke-width="1" opacity="0.9"/>
-  <text x="470" y="438" fill="#ffffff" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">🚐 4h 22m</text>
-  <text x="470" y="456" fill="#9ca3af" font-family="monospace" font-size="10" text-anchor="middle">~280 miles</text>
+  <!-- White: Horseshoe → Vegas — below the white curve -->
+  <rect x="310" y="370" width="175" height="48" rx="10" fill="#1a1a2e" stroke="#6b7280" stroke-width="1" opacity="0.9" filter="url(#shadow)"/>
+  <text x="397" y="390" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">🚐  4h 22m</text>
+  <text x="397" y="409" fill="#9ca3af" font-family="monospace" font-size="11" text-anchor="middle">~280 miles</text>
 
   <!-- ===== LEGEND ===== -->
-  <rect x="50" y="530" width="380" height="210" rx="16" fill="#0f0f1f" stroke="#374151" stroke-width="1.5" opacity="0.95" filter="url(#shadow)"/>
-  <text x="80" y="560" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Road Trip Route</text>
-  <text x="80" y="580" fill="#6b7280" font-family="monospace" font-size="12">Total: ~11h 22m driving • ~560 miles</text>
+  <rect x="55" y="650" width="400" height="215" rx="16" fill="#0f0f1f" stroke="#374151" stroke-width="1.5" opacity="0.95" filter="url(#shadow)"/>
+  <text x="90" y="685" fill="#ffffff" font-family="Arial, sans-serif" font-size="19" font-weight="bold">Road Trip Route</text>
+  <text x="90" y="708" fill="#6b7280" font-family="monospace" font-size="12">Total: ~11h 22m driving  •  ~560 miles</text>
 
-  <!-- Legend items -->
-  <line x1="80" y1="610" x2="120" y2="610" stroke="#3b82f6" stroke-width="4" stroke-linecap="round"/>
-  <text x="135" y="615" fill="#93c5fd" font-family="Arial, sans-serif" font-size="14">Vegas → South Rim (Day 1)</text>
+  <line x1="90" y1="738" x2="135" y2="738" stroke="#3b82f6" stroke-width="4" stroke-linecap="round"/>
+  <text x="150" y="743" fill="#93c5fd" font-family="Arial, sans-serif" font-size="14">Vegas → South Rim (Day 1)</text>
 
-  <line x1="80" y1="640" x2="120" y2="640" stroke="#ef4444" stroke-width="4" stroke-linecap="round"/>
-  <text x="135" y="645" fill="#fca5a5" font-family="Arial, sans-serif" font-size="14">South Rim → Page (Day 1 evening)</text>
+  <line x1="90" y1="770" x2="135" y2="770" stroke="#ef4444" stroke-width="4" stroke-linecap="round"/>
+  <text x="150" y="775" fill="#fca5a5" font-family="Arial, sans-serif" font-size="14">South Rim → Page (Day 1 evening)</text>
 
-  <line x1="80" y1="670" x2="120" y2="670" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/>
-  <text x="135" y="675" fill="#86efac" font-family="Arial, sans-serif" font-size="14">Antelope Canyon → Horseshoe (Day 2)</text>
+  <line x1="90" y1="802" x2="135" y2="802" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/>
+  <text x="150" y="807" fill="#86efac" font-family="Arial, sans-serif" font-size="14">Antelope Canyon → Horseshoe (Day 2)</text>
 
-  <line x1="80" y1="700" x2="120" y2="700" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
-  <text x="135" y="705" fill="#d1d5db" font-family="Arial, sans-serif" font-size="14">Horseshoe Bend → Vegas (Day 2)</text>
+  <line x1="90" y1="834" x2="135" y2="834" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <text x="150" y="839" fill="#d1d5db" font-family="Arial, sans-serif" font-size="14">Horseshoe Bend → Vegas (Day 2)</text>
 
-  <!-- Small car emoji moving along the route -->
-  <text font-size="24" filter="url(#softglow)">
-    <animateMotion dur="12s" repeatCount="indefinite" rotate="auto"
-      path="M 200,350 C 320,360 450,280 580,220 Q 650,190 750,200 Q 820,210 880,280 Q 920,240 940,200 Q 960,160 950,130 Q 940,110 920,100 Q 880,80 840,120 Q 820,145 810,170 Q 800,190 790,210 Q 780,230 770,240 Q 700,300 600,350 Q 500,400 400,420 Q 300,430 230,390 Q 210,375 200,350"/>
+  <!-- Animated van moving along the full route (slow — 25s loop) -->
+  <text font-size="26" filter="url(#softglow)">
+    <animateMotion dur="25s" repeatCount="indefinite" rotate="auto"
+      path="M 180,480 C 350,490 550,520 700,540 Q 800,555 920,580 Q 940,450 900,340 Q 870,260 820,180 Q 800,210 760,260 Q 600,300 450,350 Q 300,400 220,450 Q 190,465 180,480"/>
     🚐
   </text>
 </svg>

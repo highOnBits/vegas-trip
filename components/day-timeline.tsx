@@ -384,15 +384,6 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
               <div className="px-2 md:px-3 py-1 md:py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20">
                 {events.length} Activities
               </div>
-              {(day === 3 || day === 4) && (
-                <button
-                  onClick={() => setShowRouteMap(true)}
-                  className="px-2.5 md:px-4 py-1.5 md:py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-emerald-500/20 text-blue-400 border border-blue-500/30 font-bold hover:from-blue-500/30 hover:to-emerald-500/30 transition-all duration-300 hover:scale-105 flex items-center gap-1.5"
-                >
-                  <Map className="w-3 h-3 md:w-4 md:h-4" />
-                  🗺️ Route Map
-                </button>
-              )}
             </motion.div>
           </div>
         </div>
@@ -400,6 +391,50 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
 
       {/* Route Map Dialog */}
       <RouteMapDialog open={showRouteMap} onOpenChange={setShowRouteMap} />
+
+      {/* Fancy floating Route Map button — top right, only on Day 3/4 */}
+      {(day === 3 || day === 4) && (
+        <motion.button
+          onClick={() => setShowRouteMap(true)}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
+          className="fixed top-20 md:top-24 right-4 md:right-8 z-50 group cursor-pointer"
+        >
+          <div className="relative">
+            {/* Pulsing ring */}
+            <motion.div
+              className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-blue-500/30 via-emerald-500/20 to-purple-500/30 blur-lg"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.5, 0.8, 0.5],
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Main button */}
+            <div className="relative h-14 w-14 md:h-18 md:w-18 rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 shadow-2xl shadow-blue-500/40 flex items-center justify-center border-2 border-white/20 group-hover:shadow-blue-400/60 group-hover:border-white/40 transition-all duration-300 group-hover:scale-110">
+              <motion.span
+                className="text-2xl md:text-3xl"
+                animate={{
+                  scale: [1, 1.15, 1],
+                  rotate: [0, -5, 5, 0],
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                🗺️
+              </motion.span>
+            </div>
+            {/* Label */}
+            <motion.div
+              className="absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-0.5 rounded-full bg-background/90 border border-blue-500/30 text-[9px] md:text-[10px] font-bold text-blue-400 backdrop-blur-sm"
+              animate={{ y: [0, -2, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              Route Map
+            </motion.div>
+          </div>
+        </motion.button>
+      )}
 
       {/* Timeline */}
       <div className="relative z-10 container mx-auto px-3 md:px-4 py-6 md:py-12 max-w-5xl">

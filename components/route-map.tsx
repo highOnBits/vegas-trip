@@ -109,15 +109,16 @@ export default function RouteMap() {
       </path>
 
       {/* === ROUTE 2: GC → Page (red) — via Desert View/Cameron/US-89 north === */}
-      {/* Goes RIGHT from GC to Cameron, then tight curve NORTH UP to Page */}
+      {/* Goes RIGHT from GC, bends MORE LEFT/EAST to Cameron, then tight curve UP to Page */}
       <path
         d="M 900,470
-           Q 960,490 1020,520
-           Q 1060,540 1080,560
-           Q 1130,560 1170,500
-           Q 1210,420 1200,320
-           Q 1190,240 1150,180
-           Q 1130,155 1100,140"
+           Q 950,500 1000,540
+           Q 1040,570 1080,590
+           Q 1140,610 1200,570
+           Q 1260,520 1280,440
+           Q 1290,360 1250,270
+           Q 1210,200 1160,160
+           Q 1130,140 1100,140"
         stroke="#ef4444"
         strokeWidth="5"
         fill="none"
@@ -127,12 +128,13 @@ export default function RouteMap() {
       />
       <path
         d="M 900,470
-           Q 960,490 1020,520
-           Q 1060,540 1080,560
-           Q 1130,560 1170,500
-           Q 1210,420 1200,320
-           Q 1190,240 1150,180
-           Q 1130,155 1100,140"
+           Q 950,500 1000,540
+           Q 1040,570 1080,590
+           Q 1140,610 1200,570
+           Q 1260,520 1280,440
+           Q 1290,360 1250,270
+           Q 1210,200 1160,160
+           Q 1130,140 1100,140"
         stroke="#f87171"
         strokeWidth="2"
         fill="none"
@@ -144,16 +146,17 @@ export default function RouteMap() {
       </path>
 
       {/* === ROUTE 3: Return (blue) — Page → St. George → I-15 → Vegas === */}
-      {/* Sweeps LEFT from Page, curves UP/THROUGH St. George area, then bends DOWN-LEFT to Vegas */}
-      {/* Matches the Google Maps white route shape — wider arc across the top with a bump near St. George */}
+      {/* More bends: Page → east curve → dip south → back up to St. George → curve left → bend down to Vegas */}
       <path
         d="M 1100,140
-           Q 1000,100 880,90
-           Q 750,80 620,100
-           Q 550,120 520,140
-           Q 470,170 400,220
-           C 330,280 240,340 180,380
-           Q 155,400 130,420"
+           Q 1020,105 920,95
+           Q 820,85 730,80
+           Q 650,78 590,90
+           Q 540,105 520,140
+           Q 500,175 460,200
+           Q 400,240 340,290
+           Q 280,330 230,360
+           C 190,380 160,400 130,420"
         stroke="#3b82f6"
         strokeWidth="5"
         fill="none"
@@ -163,12 +166,14 @@ export default function RouteMap() {
       />
       <path
         d="M 1100,140
-           Q 1000,100 880,90
-           Q 750,80 620,100
-           Q 550,120 520,140
-           Q 470,170 400,220
-           C 330,280 240,340 180,380
-           Q 155,400 130,420"
+           Q 1020,105 920,95
+           Q 820,85 730,80
+           Q 650,78 590,90
+           Q 540,105 520,140
+           Q 500,175 460,200
+           Q 400,240 340,290
+           Q 280,330 230,360
+           C 190,380 160,400 130,420"
         stroke="#60a5fa"
         strokeWidth="2"
         fill="none"
@@ -214,8 +219,8 @@ export default function RouteMap() {
       <circle cx="820" cy="660" r="5" fill="#9ca3af" opacity="0.6" />
 
       {/* Cameron */}
-      <circle cx="1080" cy="560" r="12" fill="#1e1b4b" stroke="#9ca3af" strokeWidth="2" filter="url(#shadow)" />
-      <circle cx="1080" cy="560" r="5" fill="#9ca3af" opacity="0.6" />
+      <circle cx="1080" cy="590" r="12" fill="#1e1b4b" stroke="#9ca3af" strokeWidth="2" filter="url(#shadow)" />
+      <circle cx="1080" cy="590" r="5" fill="#9ca3af" opacity="0.6" />
 
       {/* St. George */}
       <circle cx="520" cy="140" r="12" fill="#1e1b4b" stroke="#9ca3af" strokeWidth="2" filter="url(#shadow)" />
@@ -246,7 +251,7 @@ export default function RouteMap() {
       {/* Waypoint labels */}
       <text x="330" y="670" fill="#9ca3af" fontFamily="Arial,sans-serif" fontSize="13" textAnchor="middle">Kingman</text>
       <text x="820" y="690" fill="#9ca3af" fontFamily="Arial,sans-serif" fontSize="13" textAnchor="middle">Williams</text>
-      <text x="1080" y="590" fill="#9ca3af" fontFamily="Arial,sans-serif" fontSize="13" textAnchor="middle">Cameron</text>
+      <text x="1080" y="618" fill="#9ca3af" fontFamily="Arial,sans-serif" fontSize="13" textAnchor="middle">Cameron</text>
       <text x="520" y="130" fill="#9ca3af" fontFamily="Arial,sans-serif" fontSize="13" textAnchor="middle">St. George</text>
 
       {/* === Drive time badges === */}
@@ -307,7 +312,7 @@ export default function RouteMap() {
           keyTimes="0;0.165;0.91;1"
           keyPoints="0;0;1;1"
           calcMode="linear"
-          path="M 130,420 C 140,500 180,580 260,630 Q 300,650 330,640 C 450,620 580,660 700,690 Q 770,700 820,660 Q 870,620 900,540 Q 910,500 900,470 Q 960,490 1020,520 Q 1060,540 1080,560 Q 1130,560 1170,500 Q 1210,420 1200,320 Q 1190,240 1150,180 Q 1130,155 1100,140 Q 1000,100 880,90 Q 750,80 620,100 Q 550,120 520,140 Q 470,170 400,220 C 330,280 240,340 180,380 Q 155,400 130,420"
+          path="M 130,420 C 140,500 180,580 260,630 Q 300,650 330,640 C 450,620 580,660 700,690 Q 770,700 820,660 Q 870,620 900,540 Q 910,500 900,470 Q 950,500 1000,540 Q 1040,570 1080,590 Q 1140,610 1200,570 Q 1260,520 1280,440 Q 1290,360 1250,270 Q 1210,200 1160,160 Q 1130,140 1100,140 Q 1020,105 920,95 Q 820,85 730,80 Q 650,78 590,90 Q 540,105 520,140 Q 500,175 460,200 Q 400,240 340,290 Q 280,330 230,360 C 190,380 160,400 130,420"
         />
         <text fontSize="30" textAnchor="middle" dominantBaseline="central">
           🚐

@@ -62,7 +62,8 @@ export function RouteMapDialog({ open, onOpenChange }: RouteMapDialogProps) {
       if (svgWidth <= viewWidth) { rafRef.current = requestAnimationFrame(tick); return }
 
       const elapsed = (Date.now() - startTimeRef.current) / 1000
-      if (elapsed >= 60) {
+      // Stop auto-scroll as soon as van arrives back at Vegas (0.92 of 60s = 55.2s)
+      if (elapsed >= 55) {
         doneRef.current = true
         return
       }

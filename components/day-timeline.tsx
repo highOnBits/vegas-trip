@@ -417,7 +417,7 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
           transition={{ delay: 0.3 }}
           className="relative z-10 container mx-auto px-3 md:px-4 pt-6 md:pt-8 max-w-5xl"
         >
-          <div className="rounded-xl md:rounded-2xl overflow-hidden border border-border/50 shadow-lg">
+          <div className="rounded-xl md:rounded-2xl overflow-hidden">
             <img
               src={getImagePath("/road-trip-route-map.svg")}
               alt="Road trip route: Vegas → Grand Canyon South Rim → Antelope Canyon → Horseshoe Bend → Vegas"

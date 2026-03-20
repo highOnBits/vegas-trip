@@ -403,12 +403,13 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
         >
           <div className="relative">
             <motion.span
-              className="text-7xl md:text-8xl drop-shadow-2xl cursor-pointer block rotate-45"
+              className="text-7xl md:text-8xl drop-shadow-2xl cursor-pointer block"
               animate={{
-                scale: [1, 1.1, 1],
+                scale: [1, 1.2, 0.95, 1.15, 1],
+                rotate: [10, 15, 5, 12, 10],
               }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-              whileHover={{ scale: 1.25 }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              whileHover={{ scale: 1.35 }}
             >
               🗺️
             </motion.span>

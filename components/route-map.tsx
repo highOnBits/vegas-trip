@@ -286,14 +286,14 @@ export default function RouteMap() {
           repeatCount="indefinite"
         />
         {/* Row of 8 faces in a line */}
-        <text fontSize="16" x="0" y="0">👨🏻</text>
-        <text fontSize="16" x="20" y="0">👩🏻</text>
-        <text fontSize="16" x="40" y="0">👨🏻</text>
-        <text fontSize="16" x="60" y="0">👩🏻</text>
-        <text fontSize="16" x="80" y="0">👨🏻</text>
-        <text fontSize="16" x="100" y="0">👨🏻</text>
-        <text fontSize="16" x="120" y="0">👩🏻</text>
-        <text fontSize="16" x="140" y="0">👨🏻</text>
+        <text fontSize="28" x="0" y="0">🧑🏻</text>
+        <text fontSize="28" x="32" y="0">👧🏻</text>
+        <text fontSize="28" x="64" y="0">🧑🏻</text>
+        <text fontSize="28" x="96" y="0">👧🏻</text>
+        <text fontSize="28" x="128" y="0">🧑🏻</text>
+        <text fontSize="28" x="160" y="0">🧑🏻</text>
+        <text fontSize="28" x="192" y="0">👧🏻</text>
+        <text fontSize="28" x="224" y="0">🧑🏻</text>
       </g>
 
       {/* === Animated Van === */}
@@ -313,7 +313,7 @@ export default function RouteMap() {
           calcMode="linear"
           path="M 130,420 C 140,500 180,580 260,630 Q 300,650 330,640 C 450,620 580,660 700,690 Q 770,700 820,660 Q 870,620 900,540 Q 910,500 900,470 Q 960,490 1020,530 Q 1060,560 1080,590 Q 1100,620 1130,610 Q 1170,590 1180,540 Q 1190,480 1170,400 Q 1150,330 1130,260 Q 1115,200 1100,140 Q 1020,105 920,95 Q 820,85 730,80 Q 650,78 590,90 Q 540,105 520,140 Q 500,175 460,200 Q 400,240 340,290 Q 280,330 230,360 C 190,380 160,400 130,420"
         />
-        <text fontSize="30" textAnchor="middle" dominantBaseline="central">
+        <text fontSize="44" textAnchor="middle" dominantBaseline="central">
           🚐
         </text>
       </g>

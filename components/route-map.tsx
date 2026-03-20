@@ -269,32 +269,45 @@ export default function RouteMap() {
       <text x="357" y="192" fill="#93c5fd" fontFamily="Arial,sans-serif" fontSize="14" fontWeight="bold" textAnchor="middle">🚐 ~4h 30m</text>
       <text x="357" y="212" fill="#60a5fa" fontFamily="monospace" fontSize="11" textAnchor="middle">~280 mi · I-15</text>
 
-      {/* === 8 faces glide in a group towards the van, then vanish === */}
-      {/* They move together as one group from left towards Vegas marker, then fade out */}
-      <g>
-        <animate
-          attributeName="opacity"
-          values="0;1;1;1;0;0;0;0;0;0;0;0"
-          keyTimes="0;0.02;0.04;0.11;0.14;0.15;0.5;0.85;0.9;0.91;0.93;1"
-          dur="30s"
-          repeatCount="indefinite"
-        />
-        <animateMotion
-          values="-120,400;-120,400;110,410;110,410"
-          keyTimes="0;0.02;0.12;1"
-          dur="30s"
-          repeatCount="indefinite"
-        />
-        {/* Row of 8 faces in a line */}
-        <text fontSize="28" x="0" y="0">🧑🏻</text>
-        <text fontSize="28" x="32" y="0">👧🏻</text>
-        <text fontSize="28" x="64" y="0">🧑🏻</text>
-        <text fontSize="28" x="96" y="0">👧🏻</text>
-        <text fontSize="28" x="128" y="0">🧑🏻</text>
-        <text fontSize="28" x="160" y="0">🧑🏻</text>
-        <text fontSize="28" x="192" y="0">👧🏻</text>
-        <text fontSize="28" x="224" y="0">🧑🏻</text>
-      </g>
+      {/* === 8 faces curve in from top-right, vanish one by one at van === */}
+      {/* Each follows the same curved path but staggered — first person arrives & vanishes, then next, etc. */}
+      {[
+        { emoji: "🧑🏻", d: 0 },
+        { emoji: "👧🏻", d: 1 },
+        { emoji: "🧑🏻", d: 2 },
+        { emoji: "👧🏻", d: 3 },
+        { emoji: "🧑🏻", d: 4 },
+        { emoji: "🧑🏻", d: 5 },
+        { emoji: "👧🏻", d: 6 },
+        { emoji: "🧑🏻", d: 7 },
+      ].map((p, i) => {
+        // Each person: appear → travel curve → arrive at van → vanish
+        // Staggered so person 0 starts first, person 7 starts last
+        // Total boarding window: 0.01 to 0.15 of 30s = 0.3s to 4.5s
+        const startMove = (0.01 + p.d * 0.01).toFixed(3)  // staggered start
+        const endMove = (0.07 + p.d * 0.01).toFixed(3)     // arrive at van
+        const vanish = (0.075 + p.d * 0.01).toFixed(3)     // vanish after arriving
+        return (
+          <text key={`person-${i}`} fontSize="28">
+            <animate
+              attributeName="opacity"
+              values={`0;0;1;1;0;0`}
+              keyTimes={`0;${startMove};${(parseFloat(startMove) + 0.005).toFixed(3)};${endMove};${vanish};1`}
+              dur="30s"
+              repeatCount="indefinite"
+            />
+            <animateMotion
+              path="M 500,-100 C 380,0 280,120 200,260 Q 160,340 125,415"
+              keyTimes={`0;${startMove};${endMove};1`}
+              keyPoints={`0;0;1;1`}
+              calcMode="linear"
+              dur="30s"
+              repeatCount="indefinite"
+            />
+            {p.emoji}
+          </text>
+        )
+      })}
 
       {/* === Animated Van === */}
       <g filter="url(#softglow)">

@@ -331,7 +331,7 @@ export default function RouteMap() {
       <g filter="url(#softglow)">
         <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.005;0.135;0.14;1" dur="50s" repeatCount="indefinite"/>
         <animateMotion values="118,408;118,408" keyTimes="0;1" dur="50s" repeatCount="indefinite"/>
-        <text fontSize="44" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
+        <text fontSize="56" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
       </g>
 
       {/* === PHASE 2: Van A→B (faces right) === */}
@@ -340,7 +340,7 @@ export default function RouteMap() {
         <animateMotion dur="50s" repeatCount="indefinite"
           keyTimes="0;0.14;0.28;1" keyPoints="0;0;1;1" calcMode="linear"
           path="M 130,420 C 140,500 180,580 260,630 Q 300,650 330,640 C 450,620 580,660 700,690 Q 770,700 820,660 Q 870,620 900,540 Q 910,500 900,470"/>
-        <text fontSize="44" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
+        <text fontSize="56" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
       </g>
 
       {/* === PHASE 3: GRAND CANYON STOP === */}
@@ -348,7 +348,7 @@ export default function RouteMap() {
       <g filter="url(#softglow)">
         <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.279;0.28;0.48;0.481;1" dur="50s" repeatCount="indefinite"/>
         <animateMotion values="888,458;888,458" keyTimes="0;1" dur="50s" repeatCount="indefinite"/>
-        <text fontSize="44" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
+        <text fontSize="56" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
       </g>
 
       {/* People come OUT of van one by one, walk to spots, hang out, walk back IN one by one */}
@@ -394,40 +394,28 @@ export default function RouteMap() {
         <animateMotion dur="50s" repeatCount="indefinite"
           keyTimes="0;0.48;0.58;1" keyPoints="0;0;1;1" calcMode="linear"
           path="M 900,470 Q 960,490 1020,530 Q 1060,560 1080,590 Q 1100,620 1130,610 Q 1170,590 1180,540 Q 1190,480 1170,400 Q 1150,330 1130,260 Q 1115,200 1100,140"/>
-        <text fontSize="44" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
+        <text fontSize="56" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
       </g>
 
-      {/* === PHASE 5: PAGE STOP === */}
+      {/* === PHASE 5: PAGE STOP — van parks, house with zzz, then van leaves === */}
       {/* Van stationary at Page */}
       <g filter="url(#softglow)">
         <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.579;0.58;0.74;0.741;1" dur="50s" repeatCount="indefinite"/>
         <animateMotion values="1088,128;1088,128" keyTimes="0;1" dur="50s" repeatCount="indefinite"/>
-        <text fontSize="44" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
+        <text fontSize="56" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
       </g>
-      {/* House */}
-      <text fontSize="32">
-        <animate attributeName="opacity" values="0;0;1;1;1;1;0;0" keyTimes="0;0.585;0.59;0.60;0.70;0.72;0.725;1" dur="50s" repeatCount="indefinite"/>
+      {/* House with zzz — appears when van arrives, stays until van leaves */}
+      <text fontSize="36">
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.585;0.59;0.72;0.725;1" dur="50s" repeatCount="indefinite"/>
         <animateMotion values="1150,85;1150,85" keyTimes="0;1" dur="50s" repeatCount="indefinite"/>
         🏠
       </text>
-      {/* People walk to house */}
-      <g>
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.595;0.625;0.63;1" dur="50s" repeatCount="indefinite"/>
-        <animateMotion values="1095,130;1095,130;1150,95;1150,95" keyTimes="0;0.59;0.625;1" dur="50s" repeatCount="indefinite"/>
-        <text fontSize="18">🧑🏻👧🏻🧑🏻👧🏻🧑🏻🧑🏻👧🏻🧑🏻</text>
-      </g>
-      {/* Zzz */}
-      <text fontSize="26">
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.635;0.64;0.685;0.69;1" dur="50s" repeatCount="indefinite"/>
-        <animateMotion values="1165,60;1165,60;1165,48;1165,48" keyTimes="0;0.64;0.67;1" dur="50s" repeatCount="indefinite"/>
+      {/* Zzz floating up from house */}
+      <text fontSize="28">
+        <animate attributeName="opacity" values="0;0;1;1;1;0;0" keyTimes="0;0.60;0.61;0.64;0.68;0.69;1" dur="50s" repeatCount="indefinite"/>
+        <animateMotion values="1168,62;1168,62;1168,42;1168,42" keyTimes="0;0.61;0.68;1" dur="50s" repeatCount="indefinite"/>
         💤
       </text>
-      {/* People walk back to van */}
-      <g>
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.695;0.70;0.73;0.735;1" dur="50s" repeatCount="indefinite"/>
-        <animateMotion values="1150,95;1150,95;1095,130;1095,130" keyTimes="0;0.695;0.73;1" dur="50s" repeatCount="indefinite"/>
-        <text fontSize="18">🧑🏻👧🏻🧑🏻👧🏻🧑🏻🧑🏻👧🏻🧑🏻</text>
-      </g>
 
       {/* === PHASE 6: Van C→A return (faces left = normal) === */}
       <g filter="url(#softglow)">
@@ -435,7 +423,7 @@ export default function RouteMap() {
         <animateMotion dur="50s" repeatCount="indefinite"
           keyTimes="0;0.74;0.92;1" keyPoints="0;0;1;1" calcMode="linear"
           path="M 1100,140 Q 1020,105 920,95 Q 820,85 730,80 Q 650,78 590,90 Q 540,105 520,140 Q 500,175 460,200 Q 400,240 340,290 Q 280,330 230,360 C 190,380 160,400 130,420"/>
-        <text fontSize="44" textAnchor="middle" dominantBaseline="central">🚐</text>
+        <text fontSize="56" textAnchor="middle" dominantBaseline="central">🚐</text>
       </g>
 
       {/* === Route Legend === */}

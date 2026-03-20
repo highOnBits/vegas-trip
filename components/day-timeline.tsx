@@ -1,10 +1,11 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, Map } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { TimelineEvent } from "@/components/timeline-event"
-import { useRef } from "react"
+import { RouteMapDialog } from "@/components/route-map-dialog"
+import { useRef, useState } from "react"
 import { getImagePath } from "@/lib/utils"
 
 const day1Events = [
@@ -121,17 +122,6 @@ const day2Events = [
 
 const day3Events = [
   {
-    time: "8:00 AM",
-    title: "Wake Up & Breakfast",
-    description: "Quick breakfast near Rio before the big road trip",
-    icon: "☕",
-    details: "Pack a day bag with layers for the canyon",
-    transport: "",
-    cost: "$15",
-    isShared: false,
-    backgroundImage: getImagePath("/vegas-brunch.jpg"),
-  },
-  {
     time: "9:30 AM",
     title: "Pick Up Rental Van at LAS",
     description: "Pick up Ford Transit 12-Passenger Van from Avis at Harry Reid Airport",
@@ -152,9 +142,9 @@ const day3Events = [
     backgroundImage: getImagePath("/rio-hotel-casino.jpg"),
   },
   {
-    time: "10:30 AM – 3:00 PM",
-    title: "Drive to Grand Canyon South Rim",
-    description: "Epic road trip through the Arizona desert",
+    time: "12:00 PM",
+    title: "Depart Vegas for Grand Canyon",
+    description: "Epic road trip through the Arizona desert begins!",
     icon: "🛣️",
     details: "~280 miles / ~4h 21m • Rest stop along the way",
     transport: "🚐 Drive",
@@ -162,7 +152,7 @@ const day3Events = [
     backgroundImage: getImagePath("/desert-highway-road-trip.jpg"),
   },
   {
-    time: "3:00 PM",
+    time: "6:00 PM",
     title: "Arrive at Grand Canyon South Rim",
     description: "Enter the park — first glimpse of the canyon!",
     icon: "🏜️",
@@ -173,37 +163,27 @@ const day3Events = [
     backgroundImage: getImagePath("/grand-canyon-panorama.jpg"),
   },
   {
-    time: "3:30 – 6:00 PM",
-    title: "Viewpoints & Rim Walking",
-    description: "Explore scenic viewpoints and easy rim trails",
-    icon: "🥾",
-    details: "Mather Point → Yavapai → short Rim Trail",
-    transport: "🚶 Walk / 🚐 Drive between viewpoints",
-    cost: "",
-    backgroundImage: getImagePath("/grand-canyon-panorama.jpg"),
-  },
-  {
-    time: "Sunset",
-    title: "Sunset at the Rim",
-    description: "The highlight — take it slow and soak it in",
+    time: "6:00 – 8:00 PM",
+    title: "Sunset & Viewpoints",
+    description: "Explore viewpoints and catch the sunset — the highlight of the trip",
     icon: "🌅",
-    details: "Hopi Point or Powell Point • Arrive early for a good spot",
-    transport: "",
+    details: "Hopi Point or Powell Point • 2–3 hours of golden hour magic",
+    transport: "🚶 Walk / 🚐 Drive between viewpoints",
     cost: "",
     backgroundImage: getImagePath("/grand-canyon-sunset-viewpoint.jpg"),
   },
   {
-    time: "7:30 PM",
+    time: "8:30 PM",
     title: "Drive to Page, AZ",
-    description: "After sunset, drive to Page for tomorrow's adventures",
+    description: "After sunset, drive to Page — nothing to do at the canyon after dark",
     icon: "🚐",
-    details: "~2h 30m drive • Nothing to do at the canyon after dark",
+    details: "~2h 30m drive to Page",
     transport: "🚐 Drive",
     cost: "",
     backgroundImage: getImagePath("/desert-highway-road-trip.jpg"),
   },
   {
-    time: "10:00 PM",
+    time: "11:00 PM",
     title: "Arrive at Airbnb in Page",
     description: "Check into the Airbnb — rest up for Antelope Canyon & Horseshoe Bend",
     icon: "🏠",
@@ -217,29 +197,39 @@ const day3Events = [
 
 const day4Events = [
   {
-    time: "8:30 AM",
-    title: "Wake Up & Breakfast",
-    description: "Quick breakfast at the Airbnb or nearby in Page",
+    time: "10:00 AM",
+    title: "Depart Airbnb",
+    description: "Check out, load up, and head to Antelope Canyon",
     icon: "☕",
-    details: "Check out of Airbnb • Load up the van",
-    transport: "",
+    details: "Quick breakfast at the Airbnb or grab something on the way",
+    transport: "🚐 Drive",
     cost: "$15",
     isShared: false,
     backgroundImage: getImagePath("/page-arizona-airbnb.jpg"),
   },
   {
-    time: "11:00 AM",
-    title: "Antelope Canyon Tour",
+    time: "10:30 AM",
+    title: "Arrive at Antelope Canyon",
+    description: "Arrive early, park, and get ready for the tour",
+    icon: "🅿️",
+    details: "Tour starts at 11:00 AM • Be there 30 min early",
+    transport: "🚐 Short drive",
+    cost: "",
+    backgroundImage: getImagePath("/antelope-canyon-tour.jpg"),
+  },
+  {
+    time: "11:00 AM – 2:00 PM",
+    title: "Antelope Canyon Tour & Explore",
     description: "Guided tour of the famous slot canyon — unreal light beams & colors",
     icon: "📸",
-    details: "Pre-booked guided tour • ~1–1.5 hours • Don't miss this!",
-    transport: "🚐 Short drive",
+    details: "Pre-booked guided tour • ~1–1.5 hours + time to explore & take photos",
+    transport: "",
     cost: "$108",
     isShared: false,
     backgroundImage: getImagePath("/antelope-canyon-tour.jpg"),
   },
   {
-    time: "1:00 PM",
+    time: "2:00 PM",
     title: "Horseshoe Bend",
     description: "Iconic overlook of the Colorado River's dramatic 270° meander",
     icon: "🌊",
@@ -249,30 +239,20 @@ const day4Events = [
     backgroundImage: getImagePath("/horseshoe-bend-sunset.jpg"),
   },
   {
-    time: "2:30 PM",
-    title: "Grab Lunch in Page",
-    description: "Quick lunch before the drive back to Vegas",
-    icon: "🍔",
-    details: "Fuel up for the road",
+    time: "3:00 PM",
+    title: "Depart Page for Vegas",
+    description: "Scenic drive back through the Arizona desert",
+    icon: "🚐",
+    details: "~4h 22m via I-15 through St. George • Grab food on the way",
     transport: "🚐 Drive",
     cost: "$20",
     isShared: false,
-    backgroundImage: getImagePath("/page-arizona-airbnb.jpg"),
-  },
-  {
-    time: "3:00 – 7:30 PM",
-    title: "Drive Back to Las Vegas",
-    description: "Scenic drive back through the Arizona desert",
-    icon: "🚐",
-    details: "~4h 22m • Enjoy the desert views",
-    transport: "🚐 Drive",
-    cost: "",
     backgroundImage: getImagePath("/desert-highway-road-trip.jpg"),
   },
   {
     time: "8:00 PM",
-    title: "Quick Dinner in Vegas",
-    description: "Grab a quick bite near the Strip or at the airport",
+    title: "Arrive in Vegas",
+    description: "Back in Vegas! Quick dinner near the Strip or at the airport",
     icon: "🍕",
     details: "Keep it light before the flight",
     transport: "🚐 Drive",
@@ -318,8 +298,8 @@ interface DayTimelineProps {
 
 export function DayTimeline({ day, onBack }: DayTimelineProps) {
   const events = allEvents[day - 1] || day1Events
-
   const dayInfo = dayInfoMap[day] || dayInfoMap[1]
+  const [showRouteMap, setShowRouteMap] = useState(false)
 
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -404,28 +384,22 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
               <div className="px-2 md:px-3 py-1 md:py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20">
                 {events.length} Activities
               </div>
+              {(day === 3 || day === 4) && (
+                <button
+                  onClick={() => setShowRouteMap(true)}
+                  className="px-2.5 md:px-4 py-1.5 md:py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-emerald-500/20 text-blue-400 border border-blue-500/30 font-bold hover:from-blue-500/30 hover:to-emerald-500/30 transition-all duration-300 hover:scale-105 flex items-center gap-1.5"
+                >
+                  <Map className="w-3 h-3 md:w-4 md:h-4" />
+                  🗺️ Route Map
+                </button>
+              )}
             </motion.div>
           </div>
         </div>
       </div>
 
-      {/* Road Trip Route Map — shown on Day 3 and Day 4 */}
-      {(day === 3 || day === 4) && (
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="relative z-10 container mx-auto px-3 md:px-4 pt-6 md:pt-8 max-w-5xl"
-        >
-          <div className="rounded-xl md:rounded-2xl overflow-hidden">
-            <img
-              src={getImagePath("/road-trip-route-map.svg")}
-              alt="Road trip route: Vegas → Grand Canyon South Rim → Antelope Canyon → Horseshoe Bend → Vegas"
-              className="w-full h-auto"
-            />
-          </div>
-        </motion.div>
-      )}
+      {/* Route Map Dialog */}
+      <RouteMapDialog open={showRouteMap} onOpenChange={setShowRouteMap} />
 
       {/* Timeline */}
       <div className="relative z-10 container mx-auto px-3 md:px-4 py-6 md:py-12 max-w-5xl">

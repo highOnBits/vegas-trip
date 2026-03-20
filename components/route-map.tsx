@@ -269,8 +269,7 @@ export default function RouteMap() {
       <text x="357" y="192" fill="#93c5fd" fontFamily="Arial,sans-serif" fontSize="14" fontWeight="bold" textAnchor="middle">🚐 ~4h 30m</text>
       <text x="357" y="212" fill="#60a5fa" fontFamily="monospace" fontSize="11" textAnchor="middle">~280 mi · I-15</text>
 
-      {/* === 8 faces curve in from top-right, vanish one by one at van === */}
-      {/* Each follows the same curved path but staggered — first person arrives & vanishes, then next, etc. */}
+      {/* === 8 faces curve in from upper-right, vanish one by one at van === */}
       {[
         { emoji: "🧑🏻", d: 0 },
         { emoji: "👧🏻", d: 1 },
@@ -281,23 +280,21 @@ export default function RouteMap() {
         { emoji: "👧🏻", d: 6 },
         { emoji: "🧑🏻", d: 7 },
       ].map((p, i) => {
-        // Each person: appear → travel curve → arrive at van → vanish
-        // Staggered so person 0 starts first, person 7 starts last
-        // Total boarding window: 0.01 to 0.15 of 30s = 0.3s to 4.5s
-        const startMove = (0.01 + p.d * 0.01).toFixed(3)  // staggered start
-        const endMove = (0.07 + p.d * 0.01).toFixed(3)     // arrive at van
-        const vanish = (0.075 + p.d * 0.01).toFixed(3)     // vanish after arriving
+        // Tighter stagger (0.005 gap), slower travel (0.01 to 0.14 window = ~4s)
+        const startMove = (0.01 + p.d * 0.005).toFixed(4)
+        const endMove = (0.10 + p.d * 0.005).toFixed(4)
+        const vanish = (0.105 + p.d * 0.005).toFixed(4)
         return (
           <text key={`person-${i}`} fontSize="28">
             <animate
               attributeName="opacity"
               values={`0;0;1;1;0;0`}
-              keyTimes={`0;${startMove};${(parseFloat(startMove) + 0.005).toFixed(3)};${endMove};${vanish};1`}
+              keyTimes={`0;${startMove};${(parseFloat(startMove) + 0.005).toFixed(4)};${endMove};${vanish};1`}
               dur="30s"
               repeatCount="indefinite"
             />
             <animateMotion
-              path="M 500,-100 C 380,0 280,120 200,260 Q 160,340 125,415"
+              path="M 300,150 C 260,220 210,300 170,360 Q 150,390 125,415"
               keyTimes={`0;${startMove};${endMove};1`}
               keyPoints={`0;0;1;1`}
               calcMode="linear"

@@ -341,13 +341,45 @@ export default function RouteMap() {
         <animateMotion values="888,458;888,458" keyTimes="0;1" dur="40s" repeatCount="indefinite"/>
         <text fontSize="44" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)">🚐</text>
       </g>
-      {/* People pop out at GC, spread out, jump, come back */}
-      <g>
-        <animate attributeName="opacity" values="0;0;1;1;1;1;0;0" keyTimes="0;0.305;0.31;0.33;0.35;0.36;0.37;1" dur="40s" repeatCount="indefinite"/>
-        {/* People spread out from van, then bounce */}
-        <animateMotion values="900,460;900,460;860,430;860,430;860,420;860,430;900,460;900,460" keyTimes="0;0.305;0.32;0.33;0.34;0.35;0.365;1" dur="40s" repeatCount="indefinite"/>
-        <text fontSize="22">🧑🏻👧🏻🧑🏻👧🏻🧑🏻🧑🏻👧🏻🧑🏻</text>
-      </g>
+      {/* People exit van one by one, scatter to unstructured positions, jump, return one by one */}
+      {[
+        { emoji: "🧑🏻", x: 810, y: 410, d: 0 },
+        { emoji: "👧🏻", x: 840, y: 395, d: 1 },
+        { emoji: "🧑🏻", x: 795, y: 430, d: 2 },
+        { emoji: "👧🏻", x: 830, y: 420, d: 3 },
+        { emoji: "🧑🏻", x: 855, y: 405, d: 4 },
+        { emoji: "🧑🏻", x: 815, y: 440, d: 5 },
+        { emoji: "👧🏻", x: 845, y: 435, d: 6 },
+        { emoji: "🧑🏻", x: 800, y: 415, d: 7 },
+      ].map((p, i) => {
+        // Each person exits staggered, goes to their scattered position, jumps, then returns staggered
+        const exitStart = (0.305 + p.d * 0.003).toFixed(4)
+        const exitEnd = (0.315 + p.d * 0.003).toFixed(4)
+        const jumpUp = "0.34"
+        const jumpDown = "0.345"
+        const returnStart = (0.355 + p.d * 0.003).toFixed(4)
+        const returnEnd = (0.365 + p.d * 0.003).toFixed(4)
+        const vanX = 895
+        const vanY = 460
+        return (
+          <text key={`gc-person-${i}`} fontSize="22">
+            <animate
+              attributeName="opacity"
+              values={`0;0;1;1;1;1;1;0;0`}
+              keyTimes={`0;${exitStart};${exitEnd};${jumpUp};${jumpDown};${returnStart};${returnEnd};${(parseFloat(returnEnd) + 0.003).toFixed(4)};1`}
+              dur="40s"
+              repeatCount="indefinite"
+            />
+            <animateMotion
+              values={`${vanX},${vanY};${vanX},${vanY};${p.x},${p.y};${p.x},${p.y};${p.x},${p.y - 15};${p.x},${p.y};${p.x},${p.y};${vanX},${vanY};${vanX},${vanY}`}
+              keyTimes={`0;${exitStart};${exitEnd};${jumpUp};0.342;${jumpDown};${returnStart};${returnEnd};1`}
+              dur="40s"
+              repeatCount="indefinite"
+            />
+            {p.emoji}
+          </text>
+        )
+      })}
 
       {/* === Van: outbound B → C (flipped = faces right) === */}
       <g filter="url(#softglow)">

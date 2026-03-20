@@ -395,6 +395,7 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
       {/* Fancy floating Route Map button — top right, only on Day 3/4 */}
       {(day === 3 || day === 4) && (
         <motion.button
+          data-route-map
           onClick={() => setShowRouteMap(true)}
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}

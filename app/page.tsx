@@ -83,9 +83,13 @@ export default function Home() {
   const [bursts, setBursts] = useState<EmojiBurst[]>([])
   const burstIdRef = useRef(0)
 
-  // Emoji burst on click/tap anywhere
+  // Emoji burst on click/tap anywhere (except route map dialog/button)
   useEffect(() => {
     const handleClick = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as HTMLElement
+      // Skip emoji burst if clicking inside route map dialog or the map button
+      if (target.closest('[data-route-map]')) return
+
       const x = "touches" in e ? e.touches[0].clientX : e.clientX
       const y = "touches" in e ? e.touches[0].clientY : e.clientY
       const count = 6 + Math.floor(Math.random() * 4) // 6-9 emojis per burst

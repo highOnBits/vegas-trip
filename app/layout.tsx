@@ -6,7 +6,7 @@ import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
-const baloo = Baloo_2({ subsets: ["latin"], variable: "--font-baloo" })
+const baloo = Baloo_2({ subsets: ["latin"], variable: "--font-baloo", display: "swap", preload: true })
 
 export const metadata: Metadata = {
   title: "Vegas + Grand Canyon 2026 | Travel Itinerary",

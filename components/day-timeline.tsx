@@ -405,11 +405,11 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
             <motion.span
               className="text-7xl md:text-8xl drop-shadow-2xl cursor-pointer block"
               animate={{
-                scale: [1, 1.18, 1, 1.12, 1, 1, 1, 1],
-                rotate: [10, 14, 10, 12, 10, 10, 10, 10],
+                scale: [1, 1.08, 1, 1, 1],
+                rotate: [10, 12, 10, 10, 10],
               }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", times: [0, 0.08, 0.16, 0.22, 0.30, 0.35, 0.7, 1] }}
-              whileHover={{ scale: 1.35 }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", times: [0, 0.1, 0.2, 0.5, 1] }}
+              whileHover={{ scale: 1.2 }}
             >
               🗺️
             </motion.span>
@@ -423,7 +423,7 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
                 <defs>
                   <path id="curve" d="M 5,38 Q 70,2 135,38" fill="none" />
                 </defs>
-                <text fontSize="15" fontWeight="bold" fontFamily="monospace" paintOrder="stroke" stroke="#000000" strokeWidth="4" fill="#60a5fa">
+                <text fontSize="16" fontWeight="bold" fontFamily="var(--font-pacifico), 'Comic Sans MS', cursive" paintOrder="stroke" stroke="#000000" strokeWidth="4" fill="#60a5fa">
                   <textPath href="#curve" startOffset="50%" textAnchor="middle">
                     Route Map
                   </textPath>

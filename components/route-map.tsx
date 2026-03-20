@@ -306,24 +306,65 @@ export default function RouteMap() {
         )
       })}
 
-      {/* === Animated Van === */}
+      {/* === Van: stationary at Vegas while people board === */}
+      <text fontSize="44" filter="url(#softglow)">
+        <animate
+          attributeName="opacity"
+          values="0;1;1;1;0;0"
+          keyTimes="0;0.005;0.01;0.14;0.145;1"
+          dur="30s"
+          repeatCount="indefinite"
+        />
+        <animateMotion
+          values="118,408;118,408"
+          keyTimes="0;1"
+          dur="30s"
+          repeatCount="indefinite"
+        />
+        🚐
+      </text>
+
+      {/* === Van: outbound A → B → C (normal orientation, faces right) === */}
       <g filter="url(#softglow)">
         <animate
           attributeName="opacity"
-          values="0;0;0;0;0;1;1;1;1;0;0;0"
-          keyTimes="0;0.12;0.13;0.14;0.15;0.165;0.17;0.9;0.91;0.93;0.94;1"
+          values="0;0;0;1;1;0;0"
+          keyTimes="0;0.14;0.15;0.155;0.55;0.555;1"
           dur="30s"
           repeatCount="indefinite"
         />
         <animateMotion
           dur="30s"
           repeatCount="indefinite"
-          keyTimes="0;0.165;0.91;1"
+          keyTimes="0;0.15;0.55;1"
           keyPoints="0;0;1;1"
           calcMode="linear"
-          path="M 130,420 C 140,500 180,580 260,630 Q 300,650 330,640 C 450,620 580,660 700,690 Q 770,700 820,660 Q 870,620 900,540 Q 910,500 900,470 Q 960,490 1020,530 Q 1060,560 1080,590 Q 1100,620 1130,610 Q 1170,590 1180,540 Q 1190,480 1170,400 Q 1150,330 1130,260 Q 1115,200 1100,140 Q 1020,105 920,95 Q 820,85 730,80 Q 650,78 590,90 Q 540,105 520,140 Q 500,175 460,200 Q 400,240 340,290 Q 280,330 230,360 C 190,380 160,400 130,420"
+          path="M 130,420 C 140,500 180,580 260,630 Q 300,650 330,640 C 450,620 580,660 700,690 Q 770,700 820,660 Q 870,620 900,540 Q 910,500 900,470 Q 960,490 1020,530 Q 1060,560 1080,590 Q 1100,620 1130,610 Q 1170,590 1180,540 Q 1190,480 1170,400 Q 1150,330 1130,260 Q 1115,200 1100,140"
         />
         <text fontSize="44" textAnchor="middle" dominantBaseline="central">
+          🚐
+        </text>
+      </g>
+
+      {/* === Van: return C → A (flipped, faces left) === */}
+      <g filter="url(#softglow)">
+        <animate
+          attributeName="opacity"
+          values="0;0;0;1;1;0;0"
+          keyTimes="0;0.55;0.555;0.56;0.91;0.915;1"
+          dur="30s"
+          repeatCount="indefinite"
+        />
+        <animateMotion
+          dur="30s"
+          repeatCount="indefinite"
+          keyTimes="0;0.56;0.91;1"
+          keyPoints="0;0;1;1"
+          calcMode="linear"
+          path="M 1100,140 Q 1020,105 920,95 Q 820,85 730,80 Q 650,78 590,90 Q 540,105 520,140 Q 500,175 460,200 Q 400,240 340,290 Q 280,330 230,360 C 190,380 160,400 130,420"
+        />
+        {/* Flipped van using scale(-1,1) */}
+        <text fontSize="44" textAnchor="middle" dominantBaseline="central" transform="scale(-1,1)" x="0" y="0">
           🚐
         </text>
       </g>

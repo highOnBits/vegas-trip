@@ -423,7 +423,7 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
                 <defs>
                   <path id="curve" d="M 5,38 Q 70,2 135,38" fill="none" />
                 </defs>
-                <text fontSize="16" fontWeight="bold" fontFamily="var(--font-pacifico), 'Comic Sans MS', cursive" paintOrder="stroke" stroke="#000000" strokeWidth="4" fill="#60a5fa">
+                <text fontSize="16" fontWeight="bold" fontFamily="var(--font-baloo), 'Comic Sans MS', sans-serif" paintOrder="stroke" stroke="#000000" strokeWidth="4" fill="#60a5fa">
                   <textPath href="#curve" startOffset="50%" textAnchor="middle">
                     Route Map
                   </textPath>

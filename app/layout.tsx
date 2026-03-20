@@ -1,12 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono, Pacifico } from "next/font/google"
+import { Geist, Geist_Mono, Baloo_2 } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
-const pacifico = Pacifico({ weight: "400", subsets: ["latin"], variable: "--font-pacifico" })
+const baloo = Baloo_2({ subsets: ["latin"], variable: "--font-baloo" })
 
 export const metadata: Metadata = {
   title: "Vegas + Grand Canyon 2026 | Travel Itinerary",
@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased ${pacifico.variable}`}>
+      <body className={`font-sans antialiased ${baloo.variable}`}>
         {children}
         <Analytics />
       </body>

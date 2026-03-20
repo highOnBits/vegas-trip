@@ -410,10 +410,10 @@ export default function RouteMap() {
         <animateMotion values="1150,85;1150,85" keyTimes="0;1" dur="50s" repeatCount="indefinite"/>
         🏠
       </text>
-      {/* Zzz floating up from house */}
-      <text fontSize="28">
+      {/* Zzz floating up from house — higher and more visible */}
+      <text fontSize="32">
         <animate attributeName="opacity" values="0;0;1;1;1;0;0" keyTimes="0;0.60;0.61;0.64;0.68;0.69;1" dur="50s" repeatCount="indefinite"/>
-        <animateMotion values="1168,62;1168,62;1168,42;1168,42" keyTimes="0;0.61;0.68;1" dur="50s" repeatCount="indefinite"/>
+        <animateMotion values="1170,55;1170,55;1170,15;1170,15" keyTimes="0;0.61;0.68;1" dur="50s" repeatCount="indefinite"/>
         💤
       </text>
 

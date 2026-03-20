@@ -403,23 +403,32 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
         >
           <div className="relative">
             <motion.span
-              className="text-6xl md:text-7xl drop-shadow-2xl cursor-pointer block"
+              className="text-7xl md:text-8xl drop-shadow-2xl cursor-pointer block"
+              style={{ rotate: "45deg" }}
               animate={{
-                scale: [1, 1.12, 1],
-                rotate: [0, -4, 4, 0],
+                scale: [1, 1.1, 1],
               }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              whileHover={{ scale: 1.3 }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              whileHover={{ scale: 1.25 }}
             >
               🗺️
             </motion.span>
-            {/* Label */}
+            {/* Curved "Route Map" label using SVG text on path */}
             <motion.div
-              className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-0.5 rounded-full bg-background/90 border border-blue-500/30 text-[9px] md:text-[11px] font-bold text-blue-400 backdrop-blur-sm"
+              className="absolute -bottom-4 left-1/2 -translate-x-1/2"
               animate={{ y: [0, -3, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              Route Map
+              <svg width="100" height="36" viewBox="0 0 100 36">
+                <defs>
+                  <path id="curve" d="M 5,30 Q 50,0 95,30" fill="none" />
+                </defs>
+                <text fill="#60a5fa" fontSize="11" fontWeight="bold" fontFamily="monospace">
+                  <textPath href="#curve" startOffset="50%" textAnchor="middle">
+                    Route Map
+                  </textPath>
+                </text>
+              </svg>
             </motion.div>
           </div>
         </motion.button>

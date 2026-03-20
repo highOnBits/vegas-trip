@@ -403,8 +403,7 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
         >
           <div className="relative">
             <motion.span
-              className="text-7xl md:text-8xl drop-shadow-2xl cursor-pointer block"
-              style={{ rotate: "45deg" }}
+              className="text-7xl md:text-8xl drop-shadow-2xl cursor-pointer block rotate-45"
               animate={{
                 scale: [1, 1.1, 1],
               }}
@@ -415,15 +414,15 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
             </motion.span>
             {/* Curved "Route Map" label using SVG text on path */}
             <motion.div
-              className="absolute -bottom-4 left-1/2 -translate-x-1/2"
+              className="absolute -bottom-6 left-1/2 -translate-x-1/2"
               animate={{ y: [0, -3, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <svg width="100" height="36" viewBox="0 0 100 36">
+              <svg width="140" height="44" viewBox="0 0 140 44">
                 <defs>
-                  <path id="curve" d="M 5,30 Q 50,0 95,30" fill="none" />
+                  <path id="curve" d="M 5,38 Q 70,2 135,38" fill="none" />
                 </defs>
-                <text fill="#60a5fa" fontSize="11" fontWeight="bold" fontFamily="monospace">
+                <text fontSize="15" fontWeight="bold" fontFamily="monospace" paintOrder="stroke" stroke="#000000" strokeWidth="4" fill="#60a5fa">
                   <textPath href="#curve" startOffset="50%" textAnchor="middle">
                     Route Map
                   </textPath>

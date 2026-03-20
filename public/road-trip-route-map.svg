@@ -24,46 +24,14 @@
   </g>
   <rect width="1200" height="900" fill="#0a0a15" opacity="0.3"/>
 
-  <!--
-    CORRECTED GEOGRAPHY matching Google Maps:
-    Vegas (150, 400) - left, middle
-    South Rim (830, 620) - center-right, lower (reached via SOUTHERN route)
-    Page/Antelope (800, 110) - upper-right
-    Horseshoe Bend (730, 190) - near Page, slightly lower-left
-
-    Blue:  Vegas → goes SOUTH first, curves east, then up to South Rim (I-40 via Kingman/Flagstaff)
-    Red:   South Rim → curves RIGHT and UP to Page (US-89 north)
-    Green: Antelope → Horseshoe (short hop)
-    White: Horseshoe/Page → goes LEFT across the NORTH/TOP back to Vegas (US-89 to I-15 via St. George)
-  -->
-
-  <!-- Leg 1: Vegas → South Rim (Blue) — goes SOUTH first, then east, then curves up -->
-  <path d="M 150,400 C 180,520 220,680 380,720 Q 540,750 700,700 Q 780,670 830,620"
-        stroke="#3b82f6" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.85"/>
-  <path d="M 150,400 C 180,520 220,680 380,720 Q 540,750 700,700 Q 780,670 830,620"
-        stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="14 10" opacity="0.4">
-    <animate attributeName="stroke-dashoffset" from="0" to="-48" dur="4s" repeatCount="indefinite"/>
-  </path>
-
-  <!-- Leg 2: South Rim → Page/Antelope (Red) — curves RIGHT then loops UP north -->
-  <path d="M 830,620 Q 920,580 960,480 Q 980,360 920,250 Q 870,170 800,110"
-        stroke="#ef4444" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.85"/>
-  <path d="M 830,620 Q 920,580 960,480 Q 980,360 920,250 Q 870,170 800,110"
-        stroke="#f87171" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="14 10" opacity="0.4">
-    <animate attributeName="stroke-dashoffset" from="0" to="-48" dur="4s" repeatCount="indefinite"/>
-  </path>
-
-  <!-- Leg 3: Antelope Canyon → Horseshoe Bend (Green) — short hop south-west -->
-  <path d="M 800,110 Q 775,145 730,190"
-        stroke="#22c55e" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.85"/>
-
-  <!-- Leg 4: Horseshoe Bend → Vegas (White) — goes LEFT across the TOP/NORTH -->
-  <path d="M 730,190 Q 600,140 450,100 Q 300,80 200,150 Q 155,220 150,400"
-        stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.55"/>
-  <path d="M 730,190 Q 600,140 450,100 Q 300,80 200,150 Q 155,220 150,400"
-        stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="14 10" opacity="0.25">
-    <animate attributeName="stroke-dashoffset" from="0" to="-48" dur="4s" repeatCount="indefinite"/>
-  </path>
+  <!-- Route lines -->
+  <path d="M 150,400 C 180,520 220,680 380,720 Q 540,750 700,700 Q 780,670 830,620" stroke="#3b82f6" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.85"/>
+  <path d="M 150,400 C 180,520 220,680 380,720 Q 540,750 700,700 Q 780,670 830,620" stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="14 10" opacity="0.4"><animate attributeName="stroke-dashoffset" from="0" to="-48" dur="4s" repeatCount="indefinite"/></path>
+  <path d="M 830,620 Q 920,580 960,480 Q 980,360 920,250 Q 870,170 800,110" stroke="#ef4444" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.85"/>
+  <path d="M 830,620 Q 920,580 960,480 Q 980,360 920,250 Q 870,170 800,110" stroke="#f87171" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="14 10" opacity="0.4"><animate attributeName="stroke-dashoffset" from="0" to="-48" dur="4s" repeatCount="indefinite"/></path>
+  <path d="M 800,110 Q 775,145 730,190" stroke="#22c55e" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.85"/>
+  <path d="M 730,190 Q 600,140 450,100 Q 300,80 200,150 Q 155,220 150,400" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round" filter="url(#glow)" opacity="0.55"/>
+  <path d="M 730,190 Q 600,140 450,100 Q 300,80 200,150 Q 155,220 150,400" stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="14 10" opacity="0.25"><animate attributeName="stroke-dashoffset" from="0" to="-48" dur="4s" repeatCount="indefinite"/></path>
 
   <!-- Location markers -->
   <circle cx="150" cy="400" r="20" fill="#1e1b4b" stroke="#a78bfa" stroke-width="3" filter="url(#shadow)"/><circle cx="150" cy="400" r="9" fill="#a78bfa" opacity="0.7"/><text x="150" y="406" fill="#ffffff" font-family="Arial,sans-serif" font-size="15" font-weight="bold" text-anchor="middle">A</text>
@@ -77,14 +45,10 @@
   <rect x="840" y="60" width="250" height="65" rx="14" fill="#0a0a15" fill-opacity="0.85" stroke="#ec4899" stroke-width="1.5" filter="url(#shadow)"/><text x="965" y="85" fill="#ec4899" font-family="Arial,sans-serif" font-size="17" font-weight="bold" text-anchor="middle">📸  Antelope Canyon</text><text x="965" y="109" fill="#9ca3af" font-family="monospace" font-size="13" text-anchor="middle">Page, AZ</text>
   <rect x="500" y="165" width="210" height="65" rx="14" fill="#0a0a15" fill-opacity="0.85" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow)"/><text x="605" y="190" fill="#22c55e" font-family="Arial,sans-serif" font-size="17" font-weight="bold" text-anchor="middle">🌊  Horseshoe Bend</text><text x="605" y="214" fill="#9ca3af" font-family="monospace" font-size="13" text-anchor="middle">Page, AZ</text>
 
-  <!-- Drive time labels — positioned along their respective routes -->
-  <!-- Blue: on the southern curve -->
+  <!-- Drive time labels -->
   <rect x="380" y="700" width="175" height="48" rx="10" fill="#1e3a5f" fill-opacity="0.9" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadow)"/><text x="467" y="720" fill="#93c5fd" font-family="Arial,sans-serif" font-size="14" font-weight="bold" text-anchor="middle">🚐  4h 21m</text><text x="467" y="739" fill="#60a5fa" font-family="monospace" font-size="11" text-anchor="middle">~280 miles</text>
-  <!-- Red: on the right side curve -->
   <rect x="960" y="400" width="170" height="48" rx="10" fill="#3f1219" fill-opacity="0.9" stroke="#ef4444" stroke-width="1.5" filter="url(#shadow)"/><text x="1045" y="420" fill="#fca5a5" font-family="Arial,sans-serif" font-size="14" font-weight="bold" text-anchor="middle">🚐  2h 30m</text><text x="1045" y="439" fill="#f87171" font-family="monospace" font-size="11" text-anchor="middle">~140 miles</text>
-  <!-- Green: between C and D -->
   <rect x="790" y="140" width="72" height="32" rx="8" fill="#0f2e1a" fill-opacity="0.9" stroke="#22c55e" stroke-width="1.5"/><text x="826" y="162" fill="#4ade80" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">15m</text>
-  <!-- White: on the northern curve -->
   <rect x="320" y="60" width="175" height="48" rx="10" fill="#1a1a2e" fill-opacity="0.9" stroke="#6b7280" stroke-width="1" filter="url(#shadow)"/><text x="407" y="80" fill="#e5e7eb" font-family="Arial,sans-serif" font-size="14" font-weight="bold" text-anchor="middle">🚐  4h 22m</text><text x="407" y="99" fill="#9ca3af" font-family="monospace" font-size="11" text-anchor="middle">~280 miles</text>
 
   <!-- Legend -->
@@ -96,7 +60,86 @@
   <line x1="90" y1="802" x2="135" y2="802" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/><text x="150" y="807" fill="#86efac" font-family="Arial,sans-serif" font-size="14">Antelope Canyon → Horseshoe (Day 2)</text>
   <line x1="90" y1="834" x2="135" y2="834" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/><text x="150" y="839" fill="#d1d5db" font-family="Arial,sans-serif" font-size="14">Horseshoe Bend → Vegas (Day 2)</text>
 
-  <!-- Animated van (no rotate so it doesn't flip backwards) -->
-  <text font-size="26" filter="url(#softglow)"><animateMotion dur="25s" repeatCount="indefinite"
-      path="M 150,400 C 180,520 220,680 380,720 Q 540,750 700,700 Q 780,670 830,620 Q 920,580 960,480 Q 980,360 920,250 Q 870,170 800,110 Q 775,145 730,190 Q 600,140 450,100 Q 300,80 200,150 Q 155,220 150,400"/>🚐</text>
+  <!-- ===== PEOPLE + VAN BOARDING ANIMATION ===== -->
+  <!--
+    Timeline:
+    0-2s:   8 people emojis appear scattered near Vegas (A marker)
+    2-4s:   People walk towards the van location (150, 385)
+    4-5s:   People fade out (boarding the van)
+    5-5.5s: Van appears
+    5.5-30s: Van drives the route
+    30-31s: Van fades, people reappear at Vegas
+    31-33s: Pause, then loop
+  -->
+
+  <!-- Person 1: 👨 male -->
+  <text font-size="18" x="0" y="0">
+    <animate attributeName="opacity" values="0;1;1;1;0;0;0;0;0;0;0;0;1;0" keyTimes="0;0.03;0.06;0.12;0.15;0.16;0.17;0.5;0.85;0.9;0.91;0.93;0.94;1" dur="33s" repeatCount="indefinite"/>
+    <animateMotion values="100,370;100,370;145,385;145,385;145,385" keyTimes="0;0.03;0.12;0.15;1" dur="33s" repeatCount="indefinite"/>
+    👨
+  </text>
+  <!-- Person 2: 👨 male -->
+  <text font-size="18" x="0" y="0">
+    <animate attributeName="opacity" values="0;1;1;1;0;0;0;0;0;0;0;0;1;0" keyTimes="0;0.03;0.06;0.12;0.15;0.16;0.17;0.5;0.85;0.9;0.91;0.93;0.94;1" dur="33s" repeatCount="indefinite"/>
+    <animateMotion values="120,350;120,350;140,380;140,380;140,380" keyTimes="0;0.03;0.12;0.15;1" dur="33s" repeatCount="indefinite"/>
+    👨
+  </text>
+  <!-- Person 3: 👩 female -->
+  <text font-size="18" x="0" y="0">
+    <animate attributeName="opacity" values="0;1;1;1;0;0;0;0;0;0;0;0;1;0" keyTimes="0;0.03;0.06;0.12;0.15;0.16;0.17;0.5;0.85;0.9;0.91;0.93;0.94;1" dur="33s" repeatCount="indefinite"/>
+    <animateMotion values="80,390;80,390;138,388;138,388;138,388" keyTimes="0;0.03;0.12;0.15;1" dur="33s" repeatCount="indefinite"/>
+    👩
+  </text>
+  <!-- Person 4: 👨 male -->
+  <text font-size="18" x="0" y="0">
+    <animate attributeName="opacity" values="0;1;1;1;0;0;0;0;0;0;0;0;1;0" keyTimes="0;0.03;0.06;0.12;0.15;0.16;0.17;0.5;0.85;0.9;0.91;0.93;0.94;1" dur="33s" repeatCount="indefinite"/>
+    <animateMotion values="130,420;130,420;148,390;148,390;148,390" keyTimes="0;0.03;0.12;0.15;1" dur="33s" repeatCount="indefinite"/>
+    👨
+  </text>
+  <!-- Person 5: 👩 female -->
+  <text font-size="18" x="0" y="0">
+    <animate attributeName="opacity" values="0;1;1;1;0;0;0;0;0;0;0;0;1;0" keyTimes="0;0.03;0.06;0.12;0.15;0.16;0.17;0.5;0.85;0.9;0.91;0.93;0.94;1" dur="33s" repeatCount="indefinite"/>
+    <animateMotion values="90,415;90,415;142,392;142,392;142,392" keyTimes="0;0.03;0.12;0.15;1" dur="33s" repeatCount="indefinite"/>
+    👩
+  </text>
+  <!-- Person 6: 👨 male -->
+  <text font-size="18" x="0" y="0">
+    <animate attributeName="opacity" values="0;1;1;1;0;0;0;0;0;0;0;0;1;0" keyTimes="0;0.03;0.06;0.12;0.15;0.16;0.17;0.5;0.85;0.9;0.91;0.93;0.94;1" dur="33s" repeatCount="indefinite"/>
+    <animateMotion values="110,360;110,360;146,383;146,383;146,383" keyTimes="0;0.03;0.12;0.15;1" dur="33s" repeatCount="indefinite"/>
+    👨
+  </text>
+  <!-- Person 7: 👩 female -->
+  <text font-size="18" x="0" y="0">
+    <animate attributeName="opacity" values="0;1;1;1;0;0;0;0;0;0;0;0;1;0" keyTimes="0;0.03;0.06;0.12;0.15;0.16;0.17;0.5;0.85;0.9;0.91;0.93;0.94;1" dur="33s" repeatCount="indefinite"/>
+    <animateMotion values="70,380;70,380;136,386;136,386;136,386" keyTimes="0;0.03;0.12;0.15;1" dur="33s" repeatCount="indefinite"/>
+    👩
+  </text>
+  <!-- Person 8: 👨 male -->
+  <text font-size="18" x="0" y="0">
+    <animate attributeName="opacity" values="0;1;1;1;0;0;0;0;0;0;0;0;1;0" keyTimes="0;0.03;0.06;0.12;0.15;0.16;0.17;0.5;0.85;0.9;0.91;0.93;0.94;1" dur="33s" repeatCount="indefinite"/>
+    <animateMotion values="140,405;140,405;150,387;150,387;150,387" keyTimes="0;0.03;0.12;0.15;1" dur="33s" repeatCount="indefinite"/>
+    👨
+  </text>
+
+  <!-- Van: appears after people board, drives the route, then fades -->
+  <!-- Use a flipped (mirrored) van via transform so it faces the right direction of travel -->
+  <g filter="url(#softglow)">
+    <animate attributeName="opacity" values="0;0;0;0;1;1;1;1;1;0;0;0" keyTimes="0;0.12;0.14;0.15;0.16;0.17;0.85;0.9;0.91;0.93;0.94;1" dur="33s" repeatCount="indefinite"/>
+    <animateMotion keyTimes="0;0.15;0.16;0.91;0.93;1"
+      values="150,400;150,400;150,400;150,400;150,400;150,400"
+      dur="33s" repeatCount="indefinite"/>
+    <!-- This is replaced by the actual path motion below -->
+  </g>
+
+  <!-- Actual moving van with correct facing direction -->
+  <!-- We use scale(-1,1) to mirror the emoji horizontally so it faces right -->
+  <g filter="url(#softglow)">
+    <animate attributeName="opacity" values="0;0;0;0;0;1;1;1;1;0;0;0" keyTimes="0;0.12;0.13;0.14;0.15;0.165;0.17;0.9;0.91;0.93;0.94;1" dur="33s" repeatCount="indefinite"/>
+    <animateMotion dur="33s" repeatCount="indefinite"
+      keyTimes="0;0.165;0.91;1"
+      keyPoints="0;0;1;1"
+      calcMode="linear"
+      path="M 150,400 C 180,520 220,680 380,720 Q 540,750 700,700 Q 780,670 830,620 Q 920,580 960,480 Q 980,360 920,250 Q 870,170 800,110 Q 775,145 730,190 Q 600,140 450,100 Q 300,80 200,150 Q 155,220 150,400"/>
+    <text font-size="28" text-anchor="middle" dominant-baseline="central">🚐</text>
+  </g>
 </svg>

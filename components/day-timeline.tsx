@@ -403,7 +403,7 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
         >
           <div className="relative">
             <motion.span
-              className="text-5xl md:text-9xl cursor-pointer block"
+              className="text-6xl md:text-9xl cursor-pointer block"
               style={{ filter: "drop-shadow(0 0 8px rgba(255,255,255,0.6)) drop-shadow(0 0 20px rgba(255,255,255,0.3))" }}
               animate={{
                 scale: [1, 1.08, 1, 1, 1],
@@ -425,7 +425,7 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
                 <defs>
                   <path id="curve-sm" d="M 5,30 Q 55,2 105,30" fill="none" />
                 </defs>
-                <text fontSize="13" fontWeight="bold" fontFamily="var(--font-baloo), 'Comic Sans MS', sans-serif" paintOrder="stroke" stroke="#000000" strokeWidth="3" fill="#60a5fa">
+                <text fontSize="13" fontWeight="bold" fontFamily="var(--font-baloo), 'Comic Sans MS', sans-serif" paintOrder="stroke" stroke="#000000" strokeWidth="3" fill="#db7050">
                   <textPath href="#curve-sm" startOffset="50%" textAnchor="middle">
                     Route Map
                   </textPath>
@@ -436,7 +436,7 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
                 <defs>
                   <path id="curve-lg" d="M 5,44 Q 90,2 175,44" fill="none" />
                 </defs>
-                <text fontSize="20" fontWeight="bold" fontFamily="var(--font-baloo), 'Comic Sans MS', sans-serif" paintOrder="stroke" stroke="#000000" strokeWidth="5" fill="#60a5fa">
+                <text fontSize="20" fontWeight="bold" fontFamily="var(--font-baloo), 'Comic Sans MS', sans-serif" paintOrder="stroke" stroke="#000000" strokeWidth="5" fill="#db7050">
                   <textPath href="#curve-lg" startOffset="50%" textAnchor="middle">
                     Route Map
                   </textPath>

@@ -399,11 +399,11 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
-          className="fixed top-20 md:top-24 right-4 md:right-8 z-50 group cursor-pointer"
+          className="fixed top-20 md:top-24 right-10 md:right-20 z-50 group cursor-pointer"
         >
           <div className="relative">
             <motion.span
-              className="text-7xl md:text-8xl drop-shadow-2xl cursor-pointer block"
+              className="text-8xl md:text-9xl drop-shadow-2xl cursor-pointer block"
               animate={{
                 scale: [1, 1.08, 1, 1, 1],
                 rotate: [10, 12, 10, 10, 10],
@@ -419,11 +419,11 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
               animate={{ y: [0, -3, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <svg width="140" height="44" viewBox="0 0 140 44">
+              <svg width="180" height="50" viewBox="0 0 180 50">
                 <defs>
-                  <path id="curve" d="M 5,38 Q 70,2 135,38" fill="none" />
+                  <path id="curve" d="M 5,44 Q 90,2 175,44" fill="none" />
                 </defs>
-                <text fontSize="16" fontWeight="bold" fontFamily="var(--font-baloo), 'Comic Sans MS', sans-serif" paintOrder="stroke" stroke="#000000" strokeWidth="4" fill="#60a5fa">
+                <text fontSize="20" fontWeight="bold" fontFamily="var(--font-baloo), 'Comic Sans MS', sans-serif" paintOrder="stroke" stroke="#000000" strokeWidth="5" fill="#60a5fa">
                   <textPath href="#curve" startOffset="50%" textAnchor="middle">
                     Route Map
                   </textPath>

@@ -399,11 +399,11 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
-          className="fixed top-20 md:top-24 right-10 md:right-20 z-50 group cursor-pointer"
+          className="fixed top-20 md:top-24 right-3 md:right-20 z-50 group cursor-pointer"
         >
           <div className="relative">
             <motion.span
-              className="text-8xl md:text-9xl drop-shadow-2xl cursor-pointer block"
+              className="text-5xl md:text-9xl drop-shadow-2xl cursor-pointer block"
               animate={{
                 scale: [1, 1.08, 1, 1, 1],
                 rotate: [10, 12, 10, 10, 10],
@@ -413,18 +413,30 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
             >
               🗺️
             </motion.span>
-            {/* Curved "Route Map" label using SVG text on path */}
+            {/* Curved "Route Map" label — small on mobile, big on desktop */}
             <motion.div
-              className="absolute -bottom-6 left-1/2 -translate-x-1/2"
+              className="absolute -bottom-4 md:-bottom-6 left-1/2 -translate-x-1/2"
               animate={{ y: [0, -3, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <svg width="180" height="50" viewBox="0 0 180 50">
+              {/* Mobile */}
+              <svg width="110" height="34" viewBox="0 0 110 34" className="md:hidden">
                 <defs>
-                  <path id="curve" d="M 5,44 Q 90,2 175,44" fill="none" />
+                  <path id="curve-sm" d="M 5,30 Q 55,2 105,30" fill="none" />
+                </defs>
+                <text fontSize="13" fontWeight="bold" fontFamily="var(--font-baloo), 'Comic Sans MS', sans-serif" paintOrder="stroke" stroke="#000000" strokeWidth="3" fill="#60a5fa">
+                  <textPath href="#curve-sm" startOffset="50%" textAnchor="middle">
+                    Route Map
+                  </textPath>
+                </text>
+              </svg>
+              {/* Desktop */}
+              <svg width="180" height="50" viewBox="0 0 180 50" className="hidden md:block">
+                <defs>
+                  <path id="curve-lg" d="M 5,44 Q 90,2 175,44" fill="none" />
                 </defs>
                 <text fontSize="20" fontWeight="bold" fontFamily="var(--font-baloo), 'Comic Sans MS', sans-serif" paintOrder="stroke" stroke="#000000" strokeWidth="5" fill="#60a5fa">
-                  <textPath href="#curve" startOffset="50%" textAnchor="middle">
+                  <textPath href="#curve-lg" startOffset="50%" textAnchor="middle">
                     Route Map
                   </textPath>
                 </text>

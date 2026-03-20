@@ -44,35 +44,35 @@ const flyingMoneyRight = [
 const dayCards = [
   {
     day: 1,
-    dayName: "Friday",
-    date: "Mar 27",
+    dayName: "Wednesday",
+    date: "Mar 25",
     title: "Arrival Night",
     emoji: "🎰",
     image: "/vegas-strip-neon-arrival.jpg",
   },
   {
     day: 2,
-    dayName: "Saturday",
-    date: "Mar 28",
+    dayName: "Thursday",
+    date: "Mar 26",
     title: "Full Vegas Day",
     emoji: "🎲",
     image: "/bellagio-fountains-vegas.jpg",
   },
   {
     day: 3,
-    dayName: "Sunday",
-    date: "Mar 29",
+    dayName: "Friday",
+    date: "Mar 27",
     title: "Grand Canyon Road Trip",
     emoji: "🏜️",
     image: "/grand-canyon-panorama.jpg",
   },
   {
     day: 4,
-    dayName: "Monday",
-    date: "Mar 30",
-    title: "Return & Fly Home",
-    emoji: "✈️",
-    image: "/grand-canyon-sunrise.jpg",
+    dayName: "Saturday",
+    date: "Mar 28",
+    title: "Antelope Canyon & Home",
+    emoji: "🏜️",
+    image: "/horseshoe-bend-sunset.jpg",
   },
 ]
 
@@ -311,8 +311,8 @@ export default function Home() {
                   </span>
                 </h1>
               </motion.div>
-              <p className="text-base md:text-2xl text-muted-foreground font-mono">March 27–31, 2026</p>
-              <p className="mt-2 md:mt-3 text-sm md:text-lg font-semibold text-accent glow-text-pink">~$889 per person</p>
+              <p className="text-base md:text-2xl text-muted-foreground font-mono">March 25–29, 2026</p>
+              <p className="mt-2 md:mt-3 text-sm md:text-lg font-semibold text-accent glow-text-pink">~$735 per person</p>
               <div className="mt-3 md:mt-5 flex items-center justify-center gap-2 md:gap-3 text-[10px] md:text-sm text-muted-foreground flex-wrap">
                 <span>✈️ ATL → LAS</span>
                 <span>•</span>
@@ -320,7 +320,9 @@ export default function Home() {
                 <span>•</span>
                 <span>🏜️ Grand Canyon</span>
                 <span>•</span>
-                <span>🌅 Fremont St</span>
+                <span>🫏 Antelope Canyon</span>
+                <span>•</span>
+                <span>🌅 Horseshoe Bend</span>
               </div>
             </motion.div>
 

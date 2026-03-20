@@ -12,8 +12,8 @@ interface WeatherDialogProps {
 export function WeatherDialog({ open, onOpenChange }: WeatherDialogProps) {
   const weatherData = [
     {
-      date: "Mar 27",
-      day: "Fri",
+      date: "Mar 25",
+      day: "Wed",
       location: "Vegas",
       temp: "72°F",
       condition: "Sunny",
@@ -22,8 +22,8 @@ export function WeatherDialog({ open, onOpenChange }: WeatherDialogProps) {
       low: 52,
     },
     {
-      date: "Mar 28",
-      day: "Sat",
+      date: "Mar 26",
+      day: "Thu",
       location: "Vegas",
       temp: "75°F",
       condition: "Clear",
@@ -32,9 +32,9 @@ export function WeatherDialog({ open, onOpenChange }: WeatherDialogProps) {
       low: 54,
     },
     {
-      date: "Mar 29",
-      day: "Sun",
-      location: "Grand Canyon",
+      date: "Mar 27",
+      day: "Fri",
+      location: "GC South Rim",
       temp: "57°F",
       condition: "Partly Cloudy",
       icon: Cloud,
@@ -42,14 +42,14 @@ export function WeatherDialog({ open, onOpenChange }: WeatherDialogProps) {
       low: 30,
     },
     {
-      date: "Mar 30",
-      day: "Mon",
-      location: "GC → Vegas",
-      temp: "60°F",
+      date: "Mar 28",
+      day: "Sat",
+      location: "Page → Vegas",
+      temp: "65°F",
       condition: "Breezy",
       icon: Wind,
       high: 73,
-      low: 32,
+      low: 38,
     },
   ]
 
@@ -97,7 +97,7 @@ export function WeatherDialog({ open, onOpenChange }: WeatherDialogProps) {
             className="mt-4 md:mt-6 p-3 md:p-4 rounded-xl bg-accent/10 border border-accent/20"
           >
             <p className="text-xs md:text-sm text-muted-foreground text-center">
-              🌵 Vegas will be warm and sunny! Grand Canyon is ~7,000ft elevation — expect cooler temps and wind.
+              🌵 Vegas will be warm and sunny! Grand Canyon South Rim is ~7,000ft elevation — expect cooler temps. Page, AZ is desert but can be windy.
             </p>
           </motion.div>
 
@@ -111,8 +111,9 @@ export function WeatherDialog({ open, onOpenChange }: WeatherDialogProps) {
             <ul className="text-[10px] md:text-xs text-muted-foreground space-y-1">
               <li>• Sunscreen and sunglasses (desert sun is intense)</li>
               <li>• Layers for Grand Canyon (warm jacket + hoodie)</li>
-              <li>• Comfortable walking shoes</li>
+              <li>• Comfortable walking shoes for hiking</li>
               <li>• Refillable water bottle</li>
+              <li>• Swimwear for the pool party</li>
             </ul>
           </motion.div>
         </div>

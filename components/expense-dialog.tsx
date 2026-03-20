@@ -9,73 +9,117 @@ interface ExpenseDialogProps {
 }
 
 export function ExpenseDialog({ open, onOpenChange }: ExpenseDialogProps) {
-  // Total costs (6 people)
-  const flights = 1200 // $200 roundtrip × 6 people
-  const vegasHotel = 1500 // 2 rooms × 2 nights all-in
-  const gcHotel = 550 // avg of $520–$580
-  const carAndGas = 600 // 7-seat SUV 2 full days (~$400 rental+taxes+fees+insurance) + gas (~$100) + parking (~$100)
-  const food = 1450 // avg of $1,200–$1,700
-  const parkEntry = 35 // per vehicle
+  // Costs breakdown
+  // Flights: $180/pp × 7 people = $1,260 + 2 checked bags × $60/bag × 2 flights = $240 → total $1,500
+  const flightsTotal = 1500
+  const flightPP = flightsTotal / 7 // ~$214.29
 
-  const grandTotal = flights + vegasHotel + gcHotel + carAndGas + food + parkEntry
-  const perPerson = grandTotal / 6
+  // Rio Hotel: $550 total for 2 rooms × 2 nights (7 people)
+  const rioTotal = 550
+  const rioPP = rioTotal / 7 // ~$78.57
+
+  // Airbnb Page, AZ: $414 total (8 people)
+  const airbnbTotal = 414
+  const airbnbPP = 51.75
+
+  // Rental Van: $265.74 total (8 people)
+  const carTotal = 265.74
+  const carPP = 33.22
+
+  // Gas estimate: ~$120 for ~560 miles (8 people)
+  const gasTotal = 120
+  const gasPP = gasTotal / 8
+
+  // Grand Canyon entry: ~$100/head (new 2026 rule)
+  const gcEntryPP = 100
+
+  // Antelope Canyon tour: $864 total (8 people)
+  const antelopeTotal = 864
+  const antelopePP = 108
+
+  // Food: ~$50–70/person/day × 3.5 days ≈ $200/pp
+  const foodPP = 200
+  const foodTotal = foodPP * 7 // rough group estimate
+
+  // Per-person total (approximate, since some costs are /7 and some /8)
+  const perPerson = Math.round(flightPP + rioPP + airbnbPP + carPP + gasPP + gcEntryPP + antelopePP + foodPP)
 
   const expenseCategories = [
     {
       category: "Flights (ATL ⇄ LAS)",
       icon: "✈️",
-      total: flights,
-      perPerson: flights / 6,
+      total: flightsTotal,
+      perPerson: flightPP,
       color: "from-amber-500/20 to-yellow-500/20 border-amber-500/30",
       textColor: "text-amber-400",
-      note: "$200 roundtrip × 6 people",
+      note: "$180/pp roundtrip × 7 + 2 checked bags ($60/bag × 2 flights)",
     },
     {
-      category: "Vegas Hotel — Flamingo",
+      category: "Rio Hotel & Casino (2 nights)",
       icon: "🏨",
-      total: vegasHotel,
-      perPerson: vegasHotel / 6,
+      total: rioTotal,
+      perPerson: rioPP,
       color: "from-pink-500/20 to-rose-500/20 border-pink-500/30",
       textColor: "text-pink-400",
-      note: "$1,500 all-in • 2 rooms × 2 nights (incl. resort fees + tax)",
+      note: "$550 all-in • 2 rooms × 2 nights (Wed–Fri) • 7 people",
     },
     {
-      category: "Grand Canyon — Maswik Lodge",
-      icon: "🏜️",
-      total: gcHotel,
-      perPerson: gcHotel / 6,
-      color: "from-orange-500/20 to-red-500/20 border-orange-500/30",
-      textColor: "text-orange-400",
-      note: "2 rooms × 1 night (inside the park!)",
+      category: "Airbnb in Page, AZ (1 night)",
+      icon: "🏠",
+      total: airbnbTotal,
+      perPerson: airbnbPP,
+      color: "from-sky-500/20 to-blue-500/20 border-sky-500/30",
+      textColor: "text-sky-400",
+      note: "$414 total • Fri night near Horseshoe Bend • 8 people",
     },
     {
-      category: "Rental SUV + Gas",
-      icon: "🚗",
-      total: carAndGas,
-      perPerson: carAndGas / 6,
+      category: "Rental Van (Avis)",
+      icon: "🚐",
+      total: carTotal,
+      perPerson: carPP,
       color: "from-emerald-500/20 to-green-500/20 border-emerald-500/30",
       textColor: "text-emerald-400",
-      note: "7-seat SUV, 2 full days + taxes/fees + ~560mi gas",
+      note: "Ford Transit 12-passenger • 1.5 days • via Costco • 8 people",
     },
     {
-      category: "Food & Drinks",
-      icon: "🍔",
-      total: food,
-      perPerson: food / 6,
-      color: "from-violet-500/20 to-purple-500/20 border-violet-500/30",
-      textColor: "text-violet-400",
-      note: "~$60–$90/person/day × 3.5 days",
+      category: "Gas (~560 miles)",
+      icon: "⛽",
+      total: gasTotal,
+      perPerson: gasPP,
+      color: "from-lime-500/20 to-green-500/20 border-lime-500/30",
+      textColor: "text-lime-400",
+      note: "Vegas ↔ Grand Canyon ↔ Page ↔ Vegas • 8 people",
     },
     {
       category: "Grand Canyon Entry",
-      icon: "🎫",
-      total: parkEntry,
-      perPerson: parkEntry / 6,
-      color: "from-teal-500/20 to-cyan-500/20 border-teal-500/30",
-      textColor: "text-teal-400",
-      note: "$35 per vehicle (7-day pass)",
+      icon: "🏜️",
+      total: gcEntryPP * 8,
+      perPerson: gcEntryPP,
+      color: "from-orange-500/20 to-red-500/20 border-orange-500/30",
+      textColor: "text-orange-400",
+      note: "~$100/head (new 2026 rule) • If lucky: $35/vehicle instead!",
+    },
+    {
+      category: "Antelope Canyon Tour",
+      icon: "📸",
+      total: antelopeTotal,
+      perPerson: antelopePP,
+      color: "from-rose-500/20 to-pink-500/20 border-rose-500/30",
+      textColor: "text-rose-400",
+      note: "$864 total • Guided slot canyon tour • 8 people",
+    },
+    {
+      category: "Food & Drinks (~3.5 days)",
+      icon: "🍔",
+      total: foodTotal,
+      perPerson: foodPP,
+      color: "from-violet-500/20 to-purple-500/20 border-violet-500/30",
+      textColor: "text-violet-400",
+      note: "~$50–70/person/day including pool party & dining out",
     },
   ]
+
+  const grandTotal = Math.round(perPerson * 7)
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -85,7 +129,7 @@ export function ExpenseDialog({ open, onOpenChange }: ExpenseDialogProps) {
             Trip Expense Breakdown
           </DialogTitle>
           <DialogDescription className="text-sm sm:text-base text-muted-foreground">
-            Complete cost breakdown for 6 people — Vegas + Grand Canyon
+            Complete cost breakdown — Vegas + Grand Canyon + Antelope Canyon
           </DialogDescription>
         </DialogHeader>
 
@@ -127,12 +171,12 @@ export function ExpenseDialog({ open, onOpenChange }: ExpenseDialogProps) {
             <div className="flex items-center justify-between gap-2">
               <div>
                 <h3 className="text-lg sm:text-2xl font-bold text-foreground">Total Per Person</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">For 6 people traveling</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">7 on flights, 8 from Friday</p>
               </div>
               <div className="text-right">
-                <div className="text-2xl sm:text-4xl font-bold text-primary">~${perPerson.toFixed(0)}</div>
+                <div className="text-2xl sm:text-4xl font-bold text-primary">~${perPerson}</div>
                 <div className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">
-                  ${grandTotal.toLocaleString()} total for group
+                  ~${grandTotal.toLocaleString()} group total
                 </div>
               </div>
             </div>
@@ -145,7 +189,7 @@ export function ExpenseDialog({ open, onOpenChange }: ExpenseDialogProps) {
             className="p-3 sm:p-4 rounded-xl bg-card/30 border border-border/20"
           >
             <p className="text-[10px] sm:text-xs text-muted-foreground text-center">
-              💡 Costs are averaged from estimated ranges. Actual costs may vary based on flight timing, hotel deals, and dining choices.
+              💡 Grand Canyon entry could drop to ~$6/pp if the $35/vehicle rate applies. Costs are estimates — actual may vary.
             </p>
           </motion.div>
         </div>

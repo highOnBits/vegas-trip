@@ -11,15 +11,15 @@ const day1Events = [
   {
     time: "8:50 PM ET",
     title: "Depart ATL → LAS",
-    description: "Nonstop flight from Atlanta to Las Vegas",
+    description: "Frontier F93923 — Nonstop from Atlanta to Las Vegas",
     icon: "✈️",
-    details: "~4h flight • You gain 3 hours (arrive PT)",
+    details: "~4h flight • Arrive 10:48 PM PT (you gain 3 hours)",
     transport: "✈️ Nonstop",
     cost: "",
     backgroundImage: getImagePath("/airport-departure-night.jpg"),
   },
   {
-    time: "~10:30 PM PT",
+    time: "10:48 PM PT",
     title: "Land in Las Vegas",
     description: "Arrive at Harry Reid International Airport (LAS)",
     icon: "🛬",
@@ -29,24 +29,24 @@ const day1Events = [
     backgroundImage: getImagePath("/vegas-strip-night-background.jpg"),
   },
   {
-    time: "11:00 PM",
-    title: "Uber to Flamingo Hotel",
-    description: "Check-in at Flamingo Las Vegas Hotel & Casino",
+    time: "11:15 PM",
+    title: "Uber to Rio Hotel & Casino",
+    description: "Check-in at Rio Hotel & Casino",
     icon: "🏨",
-    details: "2 rooms (2 Queen beds each) • Drop bags & freshen up",
+    details: "2 rooms • Check-in after 4 PM, check-out Fri Mar 27 by 11 AM",
     transport: "🚕 Uber from LAS",
     cost: "",
     isShared: true,
-    backgroundImage: getImagePath("/flamingo-hotel-night.jpg"),
+    backgroundImage: getImagePath("/rio-hotel-casino.jpg"),
   },
   {
-    time: "11:30 PM – 1:00 AM",
+    time: "11:45 PM – 1:00 AM",
     title: "Strip Walk & Late Dinner",
     description: "Casual food (quick bites / food court) and a short Strip walk",
     icon: "🌃",
     details: "Sleep early-ish — big days ahead!",
     transport: "🚶 Walk",
-    cost: "$15 per person",
+    cost: "$15",
     isShared: false,
     backgroundImage: getImagePath("/vegas-late-night-food.jpg"),
   },
@@ -60,12 +60,23 @@ const day2Events = [
     icon: "🥞",
     details: "No rush, take it easy",
     transport: "🚶 Walk",
-    cost: "$30 per person",
+    cost: "$30",
     isShared: false,
     backgroundImage: getImagePath("/vegas-brunch.jpg"),
   },
   {
-    time: "12:00 – 4:00 PM",
+    time: "11:00 AM – 3:00 PM",
+    title: "Marquee Dayclub Pool Party",
+    description: "Daytime pool party at the Cosmopolitan — DJs, drinks, and vibes",
+    icon: "🏊",
+    details: "21+ • Opens 11 AM • Bring swimwear & sunscreen",
+    transport: "🚕 Uber / 🚶 Walk",
+    cost: "$40",
+    isShared: false,
+    backgroundImage: getImagePath("/vegas-pool-party.jpg"),
+  },
+  {
+    time: "3:30 – 5:30 PM",
     title: "Strip Walk & Casino Hopping",
     description: "Explore freely — Bellagio fountains, Caesars, Venetian, and more",
     icon: "🎰",
@@ -75,34 +86,34 @@ const day2Events = [
     backgroundImage: getImagePath("/vegas-strip-daytime.jpg"),
   },
   {
-    time: "4:30 – 6:30 PM",
-    title: "Pool & Rest",
-    description: "Chill by the pool or recharge at the room",
-    icon: "🏊",
-    details: "Recharge for the evening ahead",
-    transport: "🚶 Back to Flamingo",
+    time: "6:00 – 7:30 PM",
+    title: "Rest & Get Ready",
+    description: "Head back to Rio, freshen up for the evening",
+    icon: "🛁",
+    details: "Recharge for the night ahead",
+    transport: "🚕 Uber back to Rio",
     cost: "",
-    backgroundImage: getImagePath("/vegas-pool-afternoon.jpg"),
+    backgroundImage: getImagePath("/rio-hotel-casino.jpg"),
   },
   {
-    time: "7:30 PM",
+    time: "8:00 PM",
     title: "Group Dinner",
     description: "Dinner at a group-friendly spot on the Strip",
     icon: "🍽️",
     details: "Dress up a bit — Vegas style",
     transport: "🚶 Walk / 🚕 Uber",
-    cost: "$50 per person",
+    cost: "$50",
     isShared: false,
     backgroundImage: getImagePath("/vegas-group-dinner.jpg"),
   },
   {
-    time: "9:00 PM – Late",
+    time: "9:30 PM – Late",
     title: "Casino & Fremont Street",
     description: "Casino time, then head downtown for the Fremont Street Experience",
     icon: "🎲",
     details: "Lively atmosphere • Cheaper drinks downtown",
     transport: "🚕 Uber to Fremont",
-    cost: "$20 per person",
+    cost: "$20",
     isShared: false,
     backgroundImage: getImagePath("/fremont-street-night.jpg"),
   },
@@ -110,149 +121,179 @@ const day2Events = [
 
 const day3Events = [
   {
-    time: "6:45 AM",
-    title: "Wake Up & Get Ready",
-    description: "Early start — big adventure day!",
-    icon: "⏰",
-    details: "Pack a day bag with layers",
-    transport: "",
-    cost: "",
-    backgroundImage: getImagePath("/flamingo-hotel-night.jpg"),
-  },
-  {
-    time: "7:30 AM",
-    title: "Breakfast & Check-out",
-    description: "Quick breakfast, then check out of Flamingo",
+    time: "8:00 AM",
+    title: "Wake Up & Breakfast",
+    description: "Quick breakfast near Rio before the big road trip",
     icon: "☕",
-    details: "Leave extra bags with bell desk if needed",
+    details: "Pack a day bag with layers for the canyon",
     transport: "",
-    cost: "$15 per person",
+    cost: "$15",
     isShared: false,
     backgroundImage: getImagePath("/vegas-brunch.jpg"),
   },
   {
-    time: "8:00 AM",
-    title: "Pick Up Rental SUV",
-    description: "Grab the minivan or 7-seat SUV near the Strip",
-    icon: "🚗",
-    details: "1 vehicle for all 6 people",
-    transport: "🚗 SUV / Minivan",
+    time: "9:30 AM",
+    title: "Pick Up Rental Van at LAS",
+    description: "Pick up Ford Transit 12-Passenger Van from Avis at Harry Reid Airport",
+    icon: "🚐",
+    details: "Avis rental • Duration: 1 day 13.5 hours • Drop-off Mar 28 11 PM",
+    transport: "🚕 Uber to LAS",
     cost: "",
     backgroundImage: getImagePath("/vegas-strip-daytime.jpg"),
   },
   {
-    time: "8:15 AM – 1:00 PM",
+    time: "10:00 AM",
+    title: "Check Out of Rio Hotel",
+    description: "Check out by 11 AM — load bags into the van",
+    icon: "🏨",
+    details: "Check-out before 11 AM",
+    transport: "🚐 Drive from LAS to Rio",
+    cost: "",
+    backgroundImage: getImagePath("/rio-hotel-casino.jpg"),
+  },
+  {
+    time: "10:30 AM – 3:00 PM",
     title: "Drive to Grand Canyon South Rim",
     description: "Epic road trip through the Arizona desert",
     icon: "🛣️",
-    details: "~280 miles / ~4.5 hours • 1 rest stop",
-    transport: "🚗 Drive",
+    details: "~280 miles / ~4h 21m • Rest stop along the way",
+    transport: "🚐 Drive",
     cost: "",
     backgroundImage: getImagePath("/desert-highway-road-trip.jpg"),
   },
   {
-    time: "1:00 PM",
-    title: "Arrive at Grand Canyon",
+    time: "3:00 PM",
+    title: "Arrive at Grand Canyon South Rim",
     description: "Enter the park — first glimpse of the canyon!",
     icon: "🏜️",
-    details: "Park entry: $35 per vehicle (valid 7 days)",
-    transport: "🚗 Drive in",
-    cost: "$35 total",
-    isShared: true,
-    backgroundImage: getImagePath("/grand-canyon-panorama.jpg"),
-  },
-  {
-    time: "1:30 – 5:30 PM",
-    title: "Viewpoints & Rim Walking",
-    description: "Lunch inside the park, then explore scenic viewpoints and easy rim trails",
-    icon: "🥾",
-    details: "Mather Point → Yavapai → short Rim Trail",
-    transport: "🚶 Walk / 🚗 Drive between viewpoints",
-    cost: "$20 per person",
+    details: "Park entry: ~$100/head (new 2026 rule) • If lucky, $35/vehicle",
+    transport: "🚐 Drive in",
+    cost: "$100",
     isShared: false,
     backgroundImage: getImagePath("/grand-canyon-panorama.jpg"),
   },
   {
+    time: "3:30 – 6:00 PM",
+    title: "Viewpoints & Rim Walking",
+    description: "Explore scenic viewpoints and easy rim trails",
+    icon: "🥾",
+    details: "Mather Point → Yavapai → short Rim Trail",
+    transport: "🚶 Walk / 🚐 Drive between viewpoints",
+    cost: "",
+    backgroundImage: getImagePath("/grand-canyon-panorama.jpg"),
+  },
+  {
     time: "Sunset",
-    title: "Sunset at the Rim (MUST DO)",
-    description: "The highlight of the entire trip — take it slow and soak it in",
+    title: "Sunset at the Rim",
+    description: "The highlight — take it slow and soak it in",
     icon: "🌅",
-    details: "One main sunset viewpoint • Hopi Point or Powell Point",
+    details: "Hopi Point or Powell Point • Arrive early for a good spot",
     transport: "",
     cost: "",
     backgroundImage: getImagePath("/grand-canyon-sunset-viewpoint.jpg"),
   },
   {
-    time: "7:30 PM – Night",
-    title: "Dinner & Stargazing",
-    description: "Dinner at Maswik Lodge, then step outside — the stars are unreal",
-    icon: "🌌",
-    details: "Quiet night inside the park • Minimal light pollution",
-    transport: "🚶 Walk to lodge",
-    cost: "$25 per person",
-    isShared: false,
-    backgroundImage: getImagePath("/lodge-starry-night.jpg"),
+    time: "7:30 PM",
+    title: "Drive to Page, AZ",
+    description: "After sunset, drive to Page for tomorrow's adventures",
+    icon: "🚐",
+    details: "~2h 30m drive • Nothing to do at the canyon after dark",
+    transport: "🚐 Drive",
+    cost: "",
+    backgroundImage: getImagePath("/desert-highway-road-trip.jpg"),
+  },
+  {
+    time: "10:00 PM",
+    title: "Arrive at Airbnb in Page",
+    description: "Check into the Airbnb — rest up for Antelope Canyon & Horseshoe Bend",
+    icon: "🏠",
+    details: "8 people • Settle in and sleep — early-ish morning tomorrow",
+    transport: "",
+    cost: "",
+    isShared: true,
+    backgroundImage: getImagePath("/page-arizona-airbnb.jpg"),
   },
 ]
 
 const day4Events = [
   {
-    time: "6:15 AM",
-    title: "Sunrise Viewpoint (Optional but 🔥)",
-    description: "Catch the sunrise over the Grand Canyon — a 10/10 experience",
-    icon: "🌄",
-    details: "HIGHLY recommended • Dress warm",
-    transport: "🚶 Walk from lodge",
-    cost: "",
-    backgroundImage: getImagePath("/grand-canyon-sunrise.jpg"),
-  },
-  {
-    time: "8:00 AM",
-    title: "Breakfast & Check-out",
-    description: "Breakfast at Maswik Lodge, then check out",
+    time: "8:30 AM",
+    title: "Wake Up & Breakfast",
+    description: "Quick breakfast at the Airbnb or nearby in Page",
     icon: "☕",
-    details: "Pack up and hit the road",
+    details: "Check out of Airbnb • Load up the van",
     transport: "",
-    cost: "$15 per person",
+    cost: "$15",
     isShared: false,
-    backgroundImage: getImagePath("/lodge-starry-night.jpg"),
+    backgroundImage: getImagePath("/page-arizona-airbnb.jpg"),
   },
   {
-    time: "9:00 AM – 2:00 PM",
-    title: "Drive Back to Vegas",
+    time: "11:00 AM",
+    title: "Antelope Canyon Tour",
+    description: "Guided tour of the famous slot canyon — unreal light beams & colors",
+    icon: "📸",
+    details: "Pre-booked guided tour • ~1–1.5 hours • Don't miss this!",
+    transport: "🚐 Short drive",
+    cost: "$108",
+    isShared: false,
+    backgroundImage: getImagePath("/antelope-canyon-tour.jpg"),
+  },
+  {
+    time: "1:00 PM",
+    title: "Horseshoe Bend",
+    description: "Iconic overlook of the Colorado River's dramatic 270° meander",
+    icon: "🌊",
+    details: "~15 min drive from Antelope Canyon • Short hike to the viewpoint",
+    transport: "🚐 Drive + 🚶 Hike",
+    cost: "",
+    backgroundImage: getImagePath("/horseshoe-bend-sunset.jpg"),
+  },
+  {
+    time: "2:30 PM",
+    title: "Grab Lunch in Page",
+    description: "Quick lunch before the drive back to Vegas",
+    icon: "🍔",
+    details: "Fuel up for the road",
+    transport: "🚐 Drive",
+    cost: "$20",
+    isShared: false,
+    backgroundImage: getImagePath("/page-arizona-airbnb.jpg"),
+  },
+  {
+    time: "3:00 – 7:30 PM",
+    title: "Drive Back to Las Vegas",
     description: "Scenic drive back through the Arizona desert",
-    icon: "🚗",
-    details: "~4.5 hours • Enjoy the desert views",
-    transport: "🚗 Drive",
+    icon: "🚐",
+    details: "~4h 22m • Enjoy the desert views",
+    transport: "🚐 Drive",
     cost: "",
     backgroundImage: getImagePath("/desert-highway-road-trip.jpg"),
   },
   {
-    time: "2:00 – 6:00 PM",
-    title: "Late Lunch & Shopping",
-    description: "Grab a late lunch, last-minute shopping, and chill — don't exhaust yourselves",
-    icon: "🛍️",
-    details: "Keep it easy before the flight",
-    transport: "🚶 Walk the Strip",
-    cost: "$30 per person",
+    time: "8:00 PM",
+    title: "Quick Dinner in Vegas",
+    description: "Grab a quick bite near the Strip or at the airport",
+    icon: "🍕",
+    details: "Keep it light before the flight",
+    transport: "🚐 Drive",
+    cost: "$20",
     isShared: false,
-    backgroundImage: getImagePath("/vegas-strip-daytime.jpg"),
+    backgroundImage: getImagePath("/vegas-late-night-food.jpg"),
   },
   {
-    time: "7:30 – 8:00 PM",
-    title: "Return Car & Airport Dinner",
-    description: "Drop off the rental at LAS, then grab dinner at the airport",
-    icon: "🍔",
-    details: "Return car → security → eat → relax",
-    transport: "🚗 Drive to LAS",
-    cost: "$20 per person",
-    isShared: false,
+    time: "9:30 PM",
+    title: "Return Rental Van at LAS",
+    description: "Drop off the Avis van at Harry Reid Airport",
+    icon: "🔑",
+    details: "Return by 11 PM deadline • Head to terminal",
+    transport: "🚐 Drive to LAS",
+    cost: "",
     backgroundImage: getImagePath("/airport-departure-night.jpg"),
   },
   {
-    time: "11:59 PM",
+    time: "11:54 PM",
     title: "Redeye: LAS → ATL",
-    description: "Fly home — land Atlanta Tuesday morning",
+    description: "Frontier F92428 — Fly home, land Sunday morning 6:58 AM ET",
     icon: "🛫",
     details: "Get some sleep on the plane!",
     transport: "✈️ Nonstop",
@@ -264,10 +305,10 @@ const day4Events = [
 const allEvents = [day1Events, day2Events, day3Events, day4Events]
 
 const dayInfoMap: Record<number, { date: string; theme: string; subtitle: string }> = {
-  1: { date: "Friday, March 27", theme: "Arrival Night", subtitle: "ATL → Las Vegas" },
-  2: { date: "Saturday, March 28", theme: "Full Vegas Day", subtitle: "Strip • Casino • Fremont" },
-  3: { date: "Sunday, March 29", theme: "Grand Canyon", subtitle: "Road Trip to South Rim" },
-  4: { date: "Monday, March 30", theme: "Return & Fly Home", subtitle: "Grand Canyon → LAS → ATL" },
+  1: { date: "Wednesday, March 25", theme: "Arrival Night", subtitle: "ATL → Las Vegas" },
+  2: { date: "Thursday, March 26", theme: "Full Vegas Day", subtitle: "Pool Party • Strip • Casino • Fremont" },
+  3: { date: "Friday, March 27", theme: "Grand Canyon Road Trip", subtitle: "Vegas → South Rim → Page, AZ" },
+  4: { date: "Saturday, March 28", theme: "Antelope Canyon & Home", subtitle: "Antelope Canyon • Horseshoe Bend • LAS → ATL" },
 }
 
 interface DayTimelineProps {
@@ -297,7 +338,7 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
         if (match) {
           const amount = Number.parseFloat(match[1])
           if (event.isShared) {
-            total += amount / 6
+            total += amount / 8
           } else {
             total += amount
           }
@@ -413,7 +454,24 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
               <li>• Bring layers — the rim is 7,000ft elevation and much cooler than Vegas</li>
               <li>• Carry plenty of water and snacks for the viewpoint walks</li>
               <li>• Sunset is the #1 highlight — arrive at your viewpoint early for a good spot</li>
-              <li>• The stars at night are incredible — no light pollution inside the park</li>
+              <li>• After sunset there's nothing to do — that's why we drive to Page at night</li>
+            </ul>
+          </motion.div>
+        )}
+
+        {day === 4 && (
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 1 }}
+            className="mt-8 md:mt-12 p-4 md:p-6 rounded-xl md:rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50"
+          >
+            <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3 text-primary">💡 Day 4 Tips</h3>
+            <ul className="space-y-1.5 md:space-y-2 text-xs md:text-sm text-muted-foreground">
+              <li>• Antelope Canyon: listen to your guide — best photo spots are shared during the tour</li>
+              <li>• Horseshoe Bend: the hike is short (~15 min) but bring water — it's exposed desert</li>
+              <li>• The drive back to Vegas is ~4.5 hours — leave Page by 3 PM latest</li>
+              <li>• Van must be returned to Avis at LAS by 11 PM</li>
             </ul>
           </motion.div>
         )}
@@ -431,12 +489,13 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
               <li>• Fremont Street is cheaper and livelier for drinks & vibes</li>
               <li>• Set a casino budget before you go and stick to it</li>
               <li>• Wear comfortable walking shoes — the Strip is longer than it looks</li>
+              <li>• Marquee Dayclub pool party is 21+ — bring your ID!</li>
             </ul>
           </motion.div>
         )}
       </div>
 
-      {/* Departure info for Day 4 */}
+      {/* Arrival info for Day 4 */}
       {day === 4 && (
         <motion.div
           initial={{ y: 20, opacity: 0 }}
@@ -448,12 +507,12 @@ export function DayTimeline({ day, onBack }: DayTimelineProps) {
             <div className="flex items-start gap-3 md:gap-4">
               <div className="text-2xl md:text-4xl">🛬</div>
               <div>
-                <h3 className="text-lg md:text-2xl font-bold mb-1 md:mb-2">Arrival Home - Tuesday, Mar 31</h3>
+                <h3 className="text-lg md:text-2xl font-bold mb-1 md:mb-2">Arrival Home — Sunday, Mar 29</h3>
                 <p className="text-xs md:text-base text-muted-foreground mb-1 md:mb-2">
-                  <strong className="text-foreground">Early Morning</strong> - Land ATL
+                  <strong className="text-foreground">6:58 AM ET</strong> — Land at ATL
                 </p>
                 <p className="text-[10px] md:text-sm text-muted-foreground">
-                  ✈️ Redeye from LAS → ATL • Get some rest on the plane!
+                  ✈️ Frontier F92428 Redeye from LAS → ATL • Get some rest on the plane!
                 </p>
               </div>
             </div>

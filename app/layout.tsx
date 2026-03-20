@@ -9,7 +9,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Vegas + Grand Canyon 2026 | Travel Itinerary",
-  description: "4-day Vegas and Grand Canyon adventure for 6 — March 27-31, 2026",
+  description: "4-day Vegas, Grand Canyon & Antelope Canyon adventure — March 25-29, 2026",
   generator: "v0.app",
   icons: {
     icon: [
